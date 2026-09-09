@@ -88,6 +88,8 @@ export default function BrandMarkAssembly() {
     // setter at all.
     const setOverlayOpacity = gsap.quickSetter(overlay, 'opacity')
     const setCoreOpacity = coreImg ? gsap.quickSetter(coreImg, 'opacity') : null
+    const setBaseFilter = baseImg ? gsap.quickSetter(baseImg, 'filter') : null
+    const setCoreFilter = coreImg ? gsap.quickSetter(coreImg, 'filter') : null
     const layerSetters = layerEls.map((g) =>
       g
         ? {
@@ -97,6 +99,7 @@ export default function BrandMarkAssembly() {
             sy: gsap.quickSetter(g, 'scaleY'),
             rot: gsap.quickSetter(g, 'rotation', 'deg'),
             op: gsap.quickSetter(g, 'opacity'),
+            filter: gsap.quickSetter(g, 'filter'),
           }
         : null
     )
@@ -185,10 +188,19 @@ export default function BrandMarkAssembly() {
     const activateImages = () => {
       if (imagesActivated) return
       imagesActivated = true
-      baseImg?.setAttribute('href', '/logos/parts/base.png')
-      coreImg?.setAttribute('href', '/logos/parts/core.png')
+      const holdingLogo = '/brand/02%20Xanadu%20Logos-20260726T102112Z-1-001/02%20Xanadu%20Logos/Xanadu_Holding_Color.png'
+      baseImg?.setAttribute('href', holdingLogo)
+      coreImg?.setAttribute('href', holdingLogo)
       layerEls.forEach((g, i) => {
-        g?.querySelector('image')?.setAttribute('href', `/logos/parts/${LAYERS[i].id}.png`)
+        const logo = {
+          consulting: '/brand/new%20brand%20updated/colors%20with%20names/new/white%20xanadu_consulting_logos-02%201.png',
+          soft: '/brand/new%20brand%20updated/colors%20with%20names/new/white%20xanadu_soft_logos-04%201.png',
+          sports: '/brand/new%20brand%20updated/colors%20with%20names/new/white%20xanadu_sport_logos-01%201.png',
+          ventures: '/brand/new%20brand%20updated/colors%20with%20names/new/white%20xanadu_ventures_logos-03%203.png',
+          trading: '/brand/new%20brand%20updated/colors%20with%20names/new/trading%20logo.png',
+          xw3: '/brand/new%20brand%20updated/colors%20with%20names/new/web%203%20logo.png',
+        }[LAYERS[i].id]
+        if (logo) g?.querySelector('image')?.setAttribute('href', logo)
       })
     }
 
@@ -208,6 +220,7 @@ export default function BrandMarkAssembly() {
       const maxOp = vw >= 768 ? 1 : 0.6
       const op = ease(clamp((scrollY - heroStart) / (heroEnd - heroStart || 1))) * maxOp
       setOverlayOpacity(op)
+      setBaseFilter?.('grayscale(1)')
 
       let coreProgress = 0
       LAYERS.forEach((layer, i) => {
@@ -221,6 +234,7 @@ export default function BrandMarkAssembly() {
         if (i === 0) coreProgress = clamp(p)
 
         set.op(prefersReduced ? clamp(p) : clamp(p * 1.3))
+        set.filter(`grayscale(${1 - clamp(q)})`)
         if (prefersReduced) {
           set.x(0); set.y(0); set.sx(1); set.sy(1); set.rot(0)
         } else {
@@ -239,6 +253,7 @@ export default function BrandMarkAssembly() {
         }
       })
       if (setCoreOpacity) setCoreOpacity(prefersReduced ? coreProgress : smooth(coreProgress))
+      setCoreFilter?.(`grayscale(${1 - (prefersReduced ? coreProgress : smooth(coreProgress))})`)
     }
 
     const recompute = () => {
@@ -301,7 +316,7 @@ export default function BrandMarkAssembly() {
               y={MARK_RECT.y}
               width={MARK_RECT.w}
               height={MARK_RECT.h}
-              style={{ opacity: SILHOUETTE_OPACITY }}
+              style={{ opacity: SILHOUETTE_OPACITY, filter: 'grayscale(1)' }}
             />
             {/* Per-subsidiary colored lines that fly in as you scroll. */}
             {LAYERS.map((layer, i) => (
@@ -309,7 +324,7 @@ export default function BrandMarkAssembly() {
                 key={layer.id}
                 data-layer={layer.id}
                 ref={(el) => { layerRefs.current[i] = el }}
-                style={{ opacity: 0 }}
+                style={{ opacity: 0, filter: 'grayscale(1)' }}
               >
                 <image
                   x={MARK_RECT.x}
@@ -326,7 +341,7 @@ export default function BrandMarkAssembly() {
               y={MARK_RECT.y}
               width={MARK_RECT.w}
               height={MARK_RECT.h}
-              style={{ opacity: 0 }}
+              style={{ opacity: 0, filter: 'grayscale(1)' }}
             />
           </g>
         </svg>

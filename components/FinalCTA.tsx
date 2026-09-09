@@ -76,7 +76,7 @@ export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
           {/* Group mark */}
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative footer brand mark */}
           <img
-            src="/logos/group.png"
+            src="/brand/02%20Xanadu%20Logos-20260726T102112Z-1-001/02%20Xanadu%20Logos/Xanadu_Holding_Color.png"
             alt="Xanadu"
             width={128}
             height={118}

@@ -79,7 +79,7 @@ export default function Header() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element -- small brand mark */}
           <img
-            src="/logos/group.png"
+            src="/brand/02%20Xanadu%20Logos-20260726T102112Z-1-001/02%20Xanadu%20Logos/Xanadu_Holding_Color.png"
             alt=""
             aria-hidden="true"
             width={128}

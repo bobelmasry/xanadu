@@ -60,7 +60,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
     id: 'consulting',
     name: 'Consulting',
     color: '#28D75A',
-    logo: '/logos/consulting.png',
+    logo: '/brand/new brand updated/colors with names/new/white xanadu_consulting_logos-02 1.png',
     hookText: "We don't just strategize. We execute.",
     summaryText:
       'An executional consulting boutique for tech startups and service companies across MENA — acting as your outsourced Sales & Business Development team.',
@@ -88,7 +88,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
     id: 'soft',
     name: 'Soft',
     color: '#4176FA',
-    logo: '/logos/soft.png',
+    logo: '/brand/new brand updated/colors with names/new/white xanadu_soft_logos-04 1.png',
     hookText: 'Technology as a bridge, not a barrier.',
     summaryText:
       'A leading systems integrator bringing international technology to MENA businesses — from hospitality and retail to logistics and legal.',
@@ -114,7 +114,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
     id: 'sports',
     name: 'Sports',
     color: '#FF4E33',
-    logo: '/logos/sports.png',
+    logo: '/brand/new brand updated/colors with names/new/white xanadu_sport_logos-01 1.png',
     hookText: '1.5 billion fans. One universal language.',
     summaryText:
       'A sports consulting boutique spanning sponsorship, events, athlete representation, and youth development — connecting brands, athletes, and fans.',
@@ -140,7 +140,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
     id: 'ventures',
     name: 'Ventures',
     color: '#FFD21F',
-    logo: '/logos/ventures.png',
+    logo: '/brand/new brand updated/colors with names/new/white xanadu_ventures_logos-03 3.png',
     hookText: "Building tomorrow's startups today.",
     summaryText:
       'An AI-powered venture studio taking early-stage ideas from validation to launch and fundraising.',
@@ -167,7 +167,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
     id: 'trading',
     name: 'Trading',
     color: '#4D7CFF',
-    logo: '/logos/trading.png',
+    logo: '/brand/new brand updated/colors with names/new/trading logo.png',
     hookText: "Access. Positioning. Networks. That's what opens doors.",
     summaryText:
       'We connect manufacturers, distributors, and global buyers — turning supply into real opportunity.',
@@ -192,7 +192,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
     id: 'xw3',
     name: 'Web3',
     color: '#9344DE',
-    logo: '/logos/xw3.png',
+    logo: '/brand/new brand updated/colors with names/new/web 3 logo.png',
     hookText: 'In Web3, trust is everything.',
     summaryText:
       'The complete Web3 growth partner — taking crypto brands from awareness to adoption and trust.',

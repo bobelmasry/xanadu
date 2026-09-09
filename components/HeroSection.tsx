@@ -81,7 +81,7 @@ export default function HeroSection() {
         {/* Group mark — the new holding logo (replaces the old sprite vector). */}
         {/* eslint-disable-next-line @next/next/no-img-element -- decorative hero brand mark */}
         <img
-          src="/logos/holding.png"
+          src="/brand/02%20Xanadu%20Logos-20260726T102112Z-1-001/02%20Xanadu%20Logos/Xanadu_Holding_Color.png"
           alt=""
           aria-hidden="true"
           width={512}
