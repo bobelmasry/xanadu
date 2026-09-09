@@ -5,15 +5,14 @@ import { HEXAGON_COLORS } from '../components/brandMarkData'
  * Brand-mark geometry for the dynamically generated OG/Twitter/favicon images
  * (`app/icon.tsx`, `app/opengraph-image.tsx`, `app/twitter-image.tsx`) via
  * `next/og` (Satori). Reuses the canonical subsidiary colors so the generated
- * images stay in sync with the live `BrandMarkAssembly` finale hexagon.
+ * images stay in sync with the site's holding mark.
  *
  * Satori has no DOM and needs a real font for ANY text, so these scenes are
  * deliberately glyph-free (the title/description travel via `metadata`); they
- * render only the assembled six-color hexagon — the site's core motif.
+ * render only the site's six-color hexagon motif.
  */
 
-/** Flat-top regular-hexagon vertices around (cx, cy). Angles 0,60,…,300 give
- *  flat top & bottom edges (matches the finale hexagon orientation). */
+/** Flat-top regular-hexagon vertices around (cx, cy). */
 function hexVerts(cx: number, cy: number, r: number) {
   return [0, 60, 120, 180, 240, 300].map((deg) => {
     const rad = (deg * Math.PI) / 180

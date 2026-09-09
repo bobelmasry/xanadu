@@ -8,10 +8,11 @@ export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
-  // Effect A: one-time coarse-pointer + reduced-motion detection. The cursor
-  // divs only mount once `isVisible` flips true, so listener setup lives in
-  // Effect B. Skip entirely for reduced-motion users (decorative only).
+  // Effect A: one-time desktop, fine-pointer, and reduced-motion detection.
+  // The cursor divs only mount once `isVisible` flips true, so listener setup
+  // lives in Effect B. Skip entirely for touch and reduced-motion users.
   useEffect(() => {
+    if (!window.matchMedia('(min-width: 768px)').matches) return
     if (window.matchMedia('(pointer: coarse)').matches) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional one-time client-only feature detection (window isn't available during SSR/initial render)

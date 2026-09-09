@@ -71,13 +71,6 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        {/* Map tile hosts (MenaMap loads near the journey's end) — resolve
-            DNS + open the connection early so the first tiles paint sooner.
-            dns-prefetch only (no preconnect): a full preconnect would hold a
-            live connection open for the whole journey for a map most
-            visitors reach late (or never). React 19 hoists these to <head>. */}
-        <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
-        <link rel="dns-prefetch" href="https://tile.openstreetmap.org" />
         {/* Runs synchronously before paint so GSAP-hidden content only hides
             for JS-capable clients. Without JS the page stays visible
             (progressive enhancement). Must be the first child of <body> so it

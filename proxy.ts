@@ -55,13 +55,7 @@ export function proxy(request: NextRequest) {
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
-      // MenaMap raster tiles (lib/menaMap.ts: CARTO primary + OSM fallback).
-      // Tiles are fetched via fetch/XHR → connect-src; maplibre also decodes
-      // them into blob URLs → img-src blob: above.
-      "connect-src 'self' https://*.basemaps.cartocdn.com https://tile.openstreetmap.org",
-      // maplibre-gl boots its worker from a Blob URL; without an explicit
-      // worker-src it falls back to default-src 'self', which denies blob:.
-      "worker-src 'self' blob:",
+      "connect-src 'self'",
       `frame-src ${frameSources.join(' ')}`,
       "object-src 'none'",
       "base-uri 'self'",

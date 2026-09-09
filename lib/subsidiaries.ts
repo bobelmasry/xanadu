@@ -2,13 +2,12 @@
  * Canonical source of truth for Xanadu's six subsidiaries.
  *
  * Order is load-bearing: it must stay `consulting, soft, sports, ventures,
- * trading, xw3` to preserve the `edge i ↔ arm i ↔ section id` coupling used by
- * the BrandMarkAssembly finale (see AGENTS.md). The Web3 subsidiary displays
+ * trading, xw3` to preserve the subsidiary section order. The Web3 subsidiary displays
  * as `Web3` but its id / logo path remain `xw3`.
  *
- * Consumers: the six `components/sections/*.tsx`, the home +
- * `/subsidiaries/[slug]` detail routes, `BrandMarkAssembly.tsx` (`LAYERS`),
- * `ScrollProgress.SECTIONS`, and `app/sitemap.ts`.
+ * Consumers: the six home section components, the home +
+ * `/subsidiaries/[slug]` detail routes, `ScrollProgress.SECTIONS`, and
+ * `app/sitemap.ts`.
  */
 
 export interface PortfolioItem {

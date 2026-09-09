@@ -4,7 +4,7 @@ Premium single-page storytelling site for Xanadu.
 
 ## Visual Metaphor
 
-A persistent group mark sits on the right of the viewport (centered on mobile). As the user scrolls through each subsidiary section, that section's logo **flies into** the mark, progressively assembling the Xanadu group mark — Consulting/Soft/Sports/Ventures ride their colored diagonal line; Trading and Xw3 fly to their finale hexagon edge (indigo/purple). At the finale (`FinalCTA`) the colored strokes slide their endpoints into a six-color flat-top hexagon, and each side becomes hover/click navigation back to its subsidiary. The "Ready to scale?" line leads the "→ Talk to Xanadu" CTA.
+The homepage presents Xanadu's holding mark, subsidiary sections, portfolio, network, and contact journey. The "Ready to scale?" line leads the "→ Talk to Xanadu" CTA.
 
 ## Tech Stack
 
@@ -53,5 +53,4 @@ npm run lint
 ```
 
 Notes:
-- See `AGENTS.md` for the authoritative architecture, commands, and load-bearing conventions (z-index layering, the `BrandMarkAssembly` ↔ `data-assembly-logo` coupling, contact-submission storage).
 - If you plan to use GSAP Club plugins (MorphSVG / DrawSVG), keep sensitive tokens out of source control — add them to an `.env` or an `.npmrc` and ensure `.npmrc` is ignored.

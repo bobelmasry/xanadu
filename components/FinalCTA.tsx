@@ -70,8 +70,7 @@ export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
           → Talk to Xanadu
         </button>
 
-        {/* Footer — the assembled group mark rides in via the fixed
-            BrandMarkAssembly overlay as this section scrolls into view. */}
+        {/* Footer brand mark */}
         <div className="mt-32 pt-8 flex flex-col items-center gap-6" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
           {/* Group mark */}
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative footer brand mark */}

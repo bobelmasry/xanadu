@@ -4,14 +4,14 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { scrollToId } from '../lib/scroll'
-import { HOME_JOURNEY } from './homeJourney'
+import { HOME_JOURNEY } from '../app/homeJourney'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
 // Right-side dot nav ↔ section ids. DERIVED from the home-journey registry
-// (components/homeJourney.tsx) — the single ordering source — and exported
+// (app/homeJourney.tsx) — the single ordering source — and exported
 // for the coupling-guard test (test/consistency.test.ts).
 export const SECTIONS = HOME_JOURNEY.map(({ id, label }) => ({ id, label }))
 

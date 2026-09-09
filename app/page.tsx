@@ -3,12 +3,11 @@
 import React, { useCallback, useState } from 'react'
 import dynamic from 'next/dynamic'
 import SmoothScrollProvider from '../components/SmoothScrollProvider'
-import BrandMarkAssembly from '../components/BrandMarkAssembly'
 import ScrollProgress from '../components/ScrollProgress'
 import CustomCursor from '../components/CustomCursor'
 import ParticleField from '../components/ParticleField'
 import LoadingScreen from '../components/LoadingScreen'
-import { HOME_JOURNEY } from '../components/homeJourney'
+import { HOME_JOURNEY } from './homeJourney'
 
 // Code-split + mount-on-open: the modal (and its ~150 KB libphonenumber-js
 // dependency) stays out of the initial home-page bundle and only loads when a
@@ -34,8 +33,6 @@ export default function Page() {
         <main id="scroll-container" className="relative" style={{ background: 'var(--bg-primary)' }}>
           <ParticleField />
 
-          {/* Static group mark + finale hexagon overlay */}
-          <BrandMarkAssembly />
           {/* Fixed scroll progress dots */}
           <ScrollProgress />
 

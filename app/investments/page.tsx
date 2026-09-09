@@ -1,4 +1,4 @@
-import InvestmentsSection from '../../components/sections/InvestmentsSection'
+import { InvestmentsSection } from '../homeSections'
 
 export const metadata = {
   alternates: { canonical: '/investments' },

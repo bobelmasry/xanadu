@@ -1,43 +1,21 @@
 import type { ComponentType } from 'react'
 import { SUBSIDIARY_IDS } from '../lib/subsidiaries'
-import HeroSection from './HeroSection'
-import AboutSection from './sections/AboutSection'
-import SubsidiariesIntroSection from './sections/SubsidiariesIntroSection'
-import ConsultingSection from './sections/ConsultingSection'
-import SoftSection from './sections/SoftSection'
-import SportsSection from './sections/SportsSection'
-import VenturesSection from './sections/VenturesSection'
-import TradingSection from './sections/TradingSection'
-import Xw3Section from './sections/Xw3Section'
-import InvestmentsSection from './sections/InvestmentsSection'
-import PartnersSection from './sections/PartnersSection'
-import NetworkSection from './sections/NetworkSection'
-import FinalCTA from './FinalCTA'
-
-/**
- * The single source of truth for the home-page scroll journey: one ordered
- * entry per section. Previously the order existed twice (app/page.tsx
- * composition + ScrollProgress.SECTIONS) plus once in the coupling test —
- * now `page.tsx` renders this list, `ScrollProgress.SECTIONS` is derived
- * from it, and `test/consistency.test.ts` pins it.
- *
- * `id`s are load-bearing: the section components' root `<section id>` must
- * match (BrandMarkAssembly measures bands by `getElementById(layer.id)` and
- * the dot nav + coupling tests key off these ids).
- *
- * Chapter order: hero → "Who are we" (about) → the "Our Subsidiaries"
- * chapter (intro heading + the six subsidiary sections in `lib/subsidiaries.ts`
- * order) → investments → partners → network → final CTA.
- *
- * Adding a subsidiary: add the entry in `lib/subsidiaries.ts` order and
- * update BrandMarkAssembly.LAYERS + a `/logos/parts/<id>.png` slice + sitemap.
- */
-
-/** Props superset every section in the journey tolerates (all optional). */
-export type SectionProps = {
-  onContactClick?: () => void
-  variant?: 'summary' | 'full'
-}
+import HeroSection from '../components/HeroSection'
+import {
+  AboutSection,
+  SubsidiariesIntroSection,
+  ConsultingSection,
+  SoftSection,
+  SportsSection,
+  VenturesSection,
+  TradingSection,
+  Xw3Section,
+  InvestmentsSection,
+  PartnersSection,
+  NetworkSection,
+  SectionProps,
+} from './homeSections'
+import FinalCTA from '../components/FinalCTA'
 
 export interface JourneySection {
   /** Must equal the component's `<section id>` (load-bearing — see above). */
