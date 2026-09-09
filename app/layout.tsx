@@ -36,6 +36,9 @@ export const metadata = {
   title: 'Xanadu — Global Vision, Local Execution',
   description:
     'Xanadu is a multi-disciplinary business group founded and led by Hessain Al Menawy — building and scaling businesses across emerging sectors in MENA, at the intersection of traditional industries and digital transformation.',
+  icons: {
+    icon: '/brand/Xanadu_Holding_Color.ico',
+  },
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Xanadu — Global Vision, Local Execution',
