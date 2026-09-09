@@ -24,13 +24,13 @@ export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
       style={{ minHeight: '80vh' }}
     >
       {/* Background hexagon watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.06]">
         <svg viewBox="0 0 500 500" width="600" height="600">
           {Array.from({ length: 6 }, (_, i) => {
             const cx = 250, cy = 250, r = 200
             const v1 = { x: cx + r * Math.cos((Math.PI / 3) * i - Math.PI / 2), y: cy + r * Math.sin((Math.PI / 3) * i - Math.PI / 2) }
             const v2 = { x: cx + r * Math.cos((Math.PI / 3) * ((i + 1) % 6) - Math.PI / 2), y: cy + r * Math.sin((Math.PI / 3) * ((i + 1) % 6) - Math.PI / 2) }
-            return <line key={i} x1={v1.x} y1={v1.y} x2={v2.x} y2={v2.y} stroke="white" strokeWidth="1" />
+            return <line key={i} x1={v1.x} y1={v1.y} x2={v2.x} y2={v2.y} stroke="#0f172a" strokeWidth="1" />
           })}
         </svg>
       </div>
@@ -53,13 +53,13 @@ export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
         <button
           className="cta-reveal group relative px-10 py-4 rounded-xl text-base font-semibold overflow-hidden transition-all duration-500"
           style={{
-            background: 'linear-gradient(135deg, rgba(61,90,128,0.30), rgba(40,60,90,0.30))',
-            border: '1px solid rgba(61,90,128,0.45)',
+            background: 'linear-gradient(135deg, #3D5A80, #34496a)',
+            border: '1px solid rgba(61,90,128,0.5)',
             color: '#fff',
           }}
           onClick={onContactClick}
           onMouseEnter={(e) => {
-            (e.currentTarget).style.boxShadow = '0 0 40px rgba(61,90,128,0.35), 0 0 80px rgba(40,60,90,0.20)'
+            (e.currentTarget).style.boxShadow = '0 8px 30px rgba(61,90,128,0.35)'
             ;(e.currentTarget).style.transform = 'translateY(-2px)'
           }}
           onMouseLeave={(e) => {
@@ -72,8 +72,8 @@ export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
 
         {/* Footer — the assembled group mark rides in via the fixed
             BrandMarkAssembly overlay as this section scrolls into view. */}
-        <div className="mt-32 pt-8 flex flex-col items-center gap-6" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-          {/* White group mark (recolored from the brand color logo). */}
+        <div className="mt-32 pt-8 flex flex-col items-center gap-6" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
+          {/* Group mark */}
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative footer brand mark */}
           <img
             src="/logos/group.png"

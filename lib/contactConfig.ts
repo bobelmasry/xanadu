@@ -1,4 +1,5 @@
 import type { SessionType } from './leads/types'
+import { SUBSIDIARIES, divisionName, type Subsidiary } from './subsidiaries'
 
 export interface Step {
   title: string
@@ -34,14 +35,25 @@ export const STEPS: Step[] = [
 
 export interface Routing { division: string; color: string }
 
+// Division + accent color are DERIVED from lib/subsidiaries.ts (divisionName
+// + Subsidiary.color) — the map below only owns the need → subsidiary-id
+// routing. Two needs intentionally route to ventures ('Investment & Funding'
+// and 'Building a New Idea'). An unknown id throws at load time rather than
+// shipping a half-configured contact flow.
+const to = (id: string): Routing => {
+  const s: Subsidiary | undefined = SUBSIDIARIES.find((x) => x.id === id)
+  if (!s) throw new Error(`ROUTING references unknown subsidiary id "${id}"`)
+  return { division: divisionName(s), color: s.color }
+}
+
 export const ROUTING: Record<string, Routing> = {
-  'Growth & Strategy': { division: 'Xanadu Consulting', color: '#28D75A' },
-  'Technology & Systems': { division: 'Xanadu Soft', color: '#4176FA' },
-  'Investment & Funding': { division: 'Xanadu Ventures', color: '#FFD21F' },
-  'Market Expansion & Trade': { division: 'Xanadu Trading', color: '#4D7CFF' },
-  'Sports & Sponsorships': { division: 'Xanadu Sports', color: '#FF4E33' },
-  'Building a New Idea': { division: 'Xanadu Ventures', color: '#FFD21F' },
-  'Web3 & Crypto': { division: 'Web3', color: '#9344DE' },
+  'Growth & Strategy': to('consulting'),
+  'Technology & Systems': to('soft'),
+  'Investment & Funding': to('ventures'),
+  'Market Expansion & Trade': to('trading'),
+  'Sports & Sponsorships': to('sports'),
+  'Building a New Idea': to('ventures'),
+  'Web3 & Crypto': to('xw3'),
 }
 
 /** Resolve the scheduling embed URL for a session type. Env-gated: returns null

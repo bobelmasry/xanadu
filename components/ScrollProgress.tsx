@@ -35,10 +35,10 @@ export default function ScrollProgress() {
           end: 'bottom center',
           onToggle: (self) => {
             if (self.isActive) {
-              (dot as HTMLElement).style.background = '#fff'
+              (dot as HTMLElement).style.background = '#0f172a'
               ;(dot as HTMLElement).style.transform = 'scale(1.5)'
             } else {
-              (dot as HTMLElement).style.background = 'rgba(255,255,255,0.2)'
+              (dot as HTMLElement).style.background = 'rgba(15,23,42,0.2)'
               ;(dot as HTMLElement).style.transform = 'scale(1)'
             }
           },
@@ -76,7 +76,7 @@ export default function ScrollProgress() {
   return (
     <>
       {/* Mobile/tablet top progress bar (scroll %); hidden on desktop */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-white/5 lg:hidden" aria-hidden="true">
+      <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-slate-900/5 lg:hidden" aria-hidden="true">
         <div
           ref={barRef}
           className="h-full origin-left"
@@ -108,7 +108,7 @@ export default function ScrollProgress() {
           <span
             id={`dot-${section.id}`}
             className="block w-2 h-2 rounded-full transition-all duration-300"
-            style={{ background: 'rgba(255,255,255,0.2)' }}
+            style={{ background: 'rgba(15,23,42,0.2)' }}
           />
         </button>
       ))}

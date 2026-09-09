@@ -7,19 +7,22 @@
    ═══════════════════════════════════════════ */
 
 :root {
-  /* ── Base Colors ── */
-  --bg-primary: #050508;
-  --bg-secondary: #0a0b10;
-  --bg-card: rgba(15, 17, 22, 0.6);
-  --bg-card-hover: rgba(20, 22, 30, 0.8);
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  /* ≥4.5:1 on --bg-primary (#050508) — the old #6b6b7b measured ~3.9:1,
-     below the WCAG AA threshold for the small text this token is used for. */
-  --text-muted: #8b8b9c;
+  /* ── Base Colors (light theme) ── */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f8fa;
+  --bg-card: rgba(248, 250, 252, 0.85);
+  --bg-card-hover: rgba(241, 245, 249, 0.95);
+  --text-primary: #0f172a;
+  /* ≥4.5:1 on --bg-primary (#ffffff) — slate-600, kept AA for the small text
+     this token is used for. */
+  --text-secondary: #475569;
+  /* slate-500 — 4.76:1 on white (AA small text). */
+  --text-muted: #64748b;
+  /* Hairline used by client/partner logo chips. */
+  --chip-border: rgba(15, 23, 42, 0.08);
 
   /* ── Brand / Group ── */
-  --color-group: #151923;
+  --color-group: #3D5A80;
   --accent-primary: #3D5A80;
   --accent-primary-rgb: 61, 90, 128;
 
@@ -74,14 +77,14 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.18);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(15, 23, 42, 0.3);
 }
 
 /* ── Typography ── */
@@ -93,8 +96,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(var(--accent-primary-rgb), 0.45);
-  color: #fff;
+  background: rgba(var(--accent-primary-rgb), 0.18);
+  color: var(--text-primary);
 }
 
 /* ═══════════════════════════════════════════
@@ -132,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 16px;
   /* Explicit properties, not `all` — transitioning backdrop-filter/filter
      forces repaints of the particle canvas behind every card on hover. */
@@ -141,11 +144,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass-card:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(15, 23, 42, 0.14);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -169,7 +172,7 @@ html.js .js-hidden { opacity: 0; }
   width: 100%;
   padding: 0.875rem 1rem;
   background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: 12px;
   color: var(--text-primary);
   font-family: var(--font-body);

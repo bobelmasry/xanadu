@@ -4,6 +4,7 @@ import { getClientIp, rateLimit } from '../../../lib/rateLimit'
 import type { Lead, SessionType } from '../../../lib/leads/types'
 import { isMailConfigured, sendLeadEmail } from '../../../lib/leads/mail'
 import { persistToFile } from '../../../lib/leads/file'
+import { SUBSIDIARIES, divisionName } from '../../../lib/subsidiaries'
 import { parsePhoneNumber } from 'libphonenumber-js'
 
 export const EMAIL_RE = /^[^\s@,;()<>"'\[\]]+@[^\s@,;()<>"'\[\]]+\.[^\s@,;()<>"'\[\]]{2,}$/
@@ -14,9 +15,10 @@ export const FIELD_LIMITS = {
   name: 200, email: 320, phone: 60, company: 200,
   answerValue: 2000, answerCount: 16,
 } as const
-const KNOWN_DIVISIONS = new Set([
-  'Xanadu Consulting', 'Xanadu Soft', 'Xanadu Sports', 'Xanadu Ventures', 'Xanadu Trading', 'Web3',
-])
+// Wire values the client may send for matchedDivision — DERIVED from
+// lib/subsidiaries.ts (divisionName) so a subsidiary rename flows through
+// instead of silently 400ing every contact submission.
+const KNOWN_DIVISIONS = new Set(SUBSIDIARIES.map(divisionName))
 
 // Always dynamic: this POST handler talks to external services / Node built-ins
 // and must never be statically evaluated during build.

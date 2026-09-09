@@ -92,7 +92,7 @@ export default function SubsidiariesPage() {
 
         <div
           className="mt-16 pt-8"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}
         >
           <Link
             href="/"

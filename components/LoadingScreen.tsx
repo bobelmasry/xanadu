@@ -45,8 +45,8 @@ export default function LoadingScreen() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#050508]"
-      style={{ opacity: fading ? 0 : 1, transition: `opacity ${FADE_DURATION}ms ease-in-out` }}
+      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
+      style={{ opacity: fading ? 0 : 1, transition: `opacity ${FADE_DURATION}ms ease-in-out`, background: 'var(--bg-primary)' }}
     >
       <div className="relative w-16 h-16 flex items-center justify-center mb-6">
         <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full animate-[spin_3s_linear_infinite]">
@@ -56,7 +56,7 @@ export default function LoadingScreen() {
             // (Node and Chrome V8 can differ at the ~15th decimal place).
             const x = Math.round((50 + 40 * Math.cos(angle)) * 1000) / 1000
             const y = Math.round((50 + 40 * Math.sin(angle)) * 1000) / 1000
-            return <circle key={i} cx={x} cy={y} r="2" fill="rgba(255,255,255,0.3)" />
+            return <circle key={i} cx={x} cy={y} r="2" fill="rgba(15,23,42,0.35)" />
           })}
         </svg>
         <div className="w-8 h-8 border border-[#3D5A80]/60 rounded-full animate-ping" />

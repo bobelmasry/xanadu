@@ -41,8 +41,8 @@ export default function ConfirmationScreen({ routing, chosenSession, headingRef,
         onClick={onDone}
         className="px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-300"
         style={{
-          background: 'rgba(61,90,128,0.25)',
-          border: '1px solid rgba(61,90,128,0.5)',
+          background: '#3D5A80',
+          border: '1px solid #34496a',
           color: '#fff',
         }}
       >

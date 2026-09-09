@@ -11,10 +11,6 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-}
-
 const GOLD = '#D9B00D'
 
 interface Props {
@@ -84,7 +80,7 @@ export default memo(function InvestmentsSection({ variant = 'summary' }: Props) 
                     role="region"
                     aria-label={`${inv.name} details`}
                     className="mt-3 pt-3"
-                    style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+                    style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}
                   >
                     <div className="flex flex-wrap gap-2 mb-3">
                       {inv.services.map((s, j) => (
@@ -93,7 +89,7 @@ export default memo(function InvestmentsSection({ variant = 'summary' }: Props) 
                     </div>
                     <p className="text-xs italic" style={{ color: 'var(--text-muted)' }}>{inv.value}</p>
                     {inv.caseStudy && (
-                      <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                      <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
                         <p className="text-xs uppercase tracking-widest mb-2" style={{ color: GOLD }}>Case Study</p>
                         <p className="text-xs mb-2" style={{ color: 'var(--text-secondary)' }}>
                           <span style={{ color: 'var(--text-muted)' }}>Subject: </span>{inv.caseStudy.subject}

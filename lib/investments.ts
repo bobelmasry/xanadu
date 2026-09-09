@@ -25,7 +25,7 @@ export const INVESTMENTS: Investment[] = [
     name: 'Origin CX',
     overview: "MENA's first end-to-end, tech-enabled customer experience consultancy.",
     services: ['Omnichannel CX design', 'Real-time support systems', 'CX automation'],
-    value: 'Exclusive regional partner of Zendesk, with integrations across SAP Emarsus, Infobip, Gameball.',
+    value: 'Exclusive regional partner of Zendesk, with integrations across SAP Emarsys, Infobip, Gameball.',
     caseStudy: {
       subject: 'Digital Service Provider',
       challenge: 'Poor customer experience across multiple channels.',

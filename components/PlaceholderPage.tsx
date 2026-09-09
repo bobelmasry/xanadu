@@ -41,7 +41,7 @@ export default function PlaceholderPage({
 
         {children}
 
-        <div className="mt-16 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="mt-16 pt-8" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
           <p className="text-sm italic mb-6" style={{ color: 'var(--text-muted)' }}>
             Content for this page is coming soon.
           </p>

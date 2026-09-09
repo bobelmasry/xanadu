@@ -222,7 +222,7 @@ export default function MenaMap() {
           role="region"
           aria-label="Xanadu MENA network cities"
         >
-          <p className="text-sm font-medium" style={{ color: '#fff' }}>
+          <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
             ★ Riyadh — regional hub
           </p>
           <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
@@ -255,9 +255,9 @@ export default function MenaMap() {
           aria-pressed={activeId === 'region'}
           className="mena-chip shrink-0 px-3 py-1.5 rounded-full text-xs sm:text-sm transition-colors"
           style={{
-            border: `1px solid ${activeId === 'region' ? '#3D5A80' : 'rgba(255,255,255,0.12)'}`,
+            border: `1px solid ${activeId === 'region' ? '#3D5A80' : 'rgba(15,23,42,0.12)'}`,
             background:
-              activeId === 'region' ? 'rgba(61,90,128,0.25)' : 'rgba(255,255,255,0.04)',
+              activeId === 'region' ? '#3D5A80' : 'var(--bg-card)',
             color: activeId === 'region' ? '#fff' : 'var(--text-secondary)',
           }}
         >
@@ -273,8 +273,8 @@ export default function MenaMap() {
               aria-pressed={isActive}
               className="mena-chip shrink-0 px-3 py-1.5 rounded-full text-xs sm:text-sm transition-colors"
               style={{
-                border: `1px solid ${isActive ? '#3D5A80' : 'rgba(255,255,255,0.12)'}`,
-                background: isActive ? 'rgba(61,90,128,0.25)' : 'rgba(255,255,255,0.04)',
+                border: `1px solid ${isActive ? '#3D5A80' : 'rgba(15,23,42,0.12)'}`,
+                background: isActive ? '#3D5A80' : 'var(--bg-card)',
                 color: isActive ? '#fff' : 'var(--text-secondary)',
               }}
             >

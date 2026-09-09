@@ -17,9 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     { url: `${base}/investments`, lastModified, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/portfolio`, lastModified, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${base}/work`, lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${base}/about`, lastModified, changeFrequency: 'yearly', priority: 0.5 },
-    { url: `${base}/founder`, lastModified, changeFrequency: 'yearly', priority: 0.5 },
     { url: `${base}/privacy`, lastModified, changeFrequency: 'yearly', priority: 0.3 },
   ]
 }

@@ -102,7 +102,7 @@ export default memo(function NetworkSection() {
 
         <p className="net-reveal text-lg" style={{ color: 'var(--text-muted)' }}>
           Most companies build connections.{' '}
-          <span style={{ color: '#fff', fontWeight: 500 }}>We activate networks.</span>
+          <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>We activate networks.</span>
         </p>
       </div>
     </section>

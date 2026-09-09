@@ -35,7 +35,7 @@ export default function BookingScreen({ chosenSession, url, headingRef, onContin
       <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>
         Pick a time that works for you below.
       </p>
-      <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
+      <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.12)' }}>
         <iframe
           src={url}
           title="Schedule your session"
@@ -49,8 +49,8 @@ export default function BookingScreen({ chosenSession, url, headingRef, onContin
         onClick={onContinue}
         className="mt-6 px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-300"
         style={{
-          background: 'rgba(61,90,128,0.25)',
-          border: '1px solid rgba(61,90,128,0.5)',
+          background: '#3D5A80',
+          border: '1px solid #34496a',
           color: '#fff',
         }}
       >

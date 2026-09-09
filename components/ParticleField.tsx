@@ -20,10 +20,12 @@ interface Particle {
 const ALPHA_LEVELS = 5
 const ALPHA_MIN = 0.1
 const ALPHA_MAX = 0.5
+// Navy "ink dust" particles — visible against the light background without
+// competing with the content layer.
 const ALPHA_COLORS = Array.from(
   { length: ALPHA_LEVELS },
   (_, i) =>
-    `rgba(255, 255, 255, ${(ALPHA_MIN + ((ALPHA_MAX - ALPHA_MIN) * i) / (ALPHA_LEVELS - 1)).toFixed(3)})`
+    `rgba(61, 90, 128, ${(ALPHA_MIN + ((ALPHA_MAX - ALPHA_MIN) * i) / (ALPHA_LEVELS - 1)).toFixed(3)})`
 )
 
 export default function ParticleField() {

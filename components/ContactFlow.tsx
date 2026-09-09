@@ -199,7 +199,7 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
       aria-modal="true"
       aria-label="Contact Xanadu"
       className="fixed inset-0 z-[100] flex items-center justify-center"
-      style={{ background: 'rgba(5,5,8,0.92)', backdropFilter: 'blur(20px)' }}
+      style={{ background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)' }}
       onClick={(e) => { if (e.target === e.currentTarget) handleClose() }}
     >
       {/* Close button */}
@@ -225,7 +225,7 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                 key={i}
                 className="w-2 h-2 rounded-full transition-all duration-300"
                 style={{
-                  background: i <= step ? '#fff' : 'rgba(255,255,255,0.15)',
+                  background: i <= step ? '#3D5A80' : 'rgba(15,23,42,0.15)',
                   transform: i === step ? 'scale(1.5)' : 'scale(1)',
                 }}
               />
@@ -274,7 +274,7 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                   <button
                     key={opt}
                     onClick={() => handleSelect(opt)}
-                    className="glass-card p-4 text-left text-sm font-medium transition-all duration-300 hover:border-white/20 hover:bg-white/5"
+                    className="glass-card p-4 text-left text-sm font-medium transition-all duration-300 hover:border-slate-900/20 hover:bg-slate-900/[0.03]"
                     style={{ color: 'var(--text-secondary)' }}
                   >
                     {opt}
@@ -291,10 +291,11 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                   rows={4}
                   placeholder="Tell us briefly..."
                   aria-label={currentStep.title}
-                  className="w-full p-4 rounded-xl text-white text-base md:text-sm resize-none focus:outline-none focus:border-[#3D5A80]/50 transition-colors"
+                  className="w-full p-4 rounded-xl text-base md:text-sm resize-none focus:outline-none focus:border-[#3D5A80]/50 transition-colors"
                   style={{
                     background: 'var(--bg-card)',
-                    border: '1px solid rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(15,23,42,0.12)',
+                    color: 'var(--text-primary)',
                     fontFamily: 'var(--font-body)',
                   }}
                 />
@@ -302,8 +303,8 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                   type="submit"
                   className="mt-4 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300"
                   style={{
-                    background: 'rgba(61,90,128,0.25)',
-                    border: '1px solid rgba(61,90,128,0.5)',
+                    background: '#3D5A80',
+                    border: '1px solid #34496a',
                     color: '#fff',
                   }}
                 >
@@ -342,7 +343,7 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                     className="contact-input w-28 min-[360px]:w-36 shrink-0"
                     value={phoneCountry}
                     onChange={(e) => setPhoneCountry(e.target.value)}
-                    style={{ paddingRight: '1.75rem', colorScheme: 'dark' }}
+                    style={{ paddingRight: '1.75rem', colorScheme: 'light' }}
                   >
                     <option value="">Code</option>
                     {getCountryOptions().map((c) => (
@@ -365,7 +366,7 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                     className="text-xs -mt-2 mb-1"
                     style={{
                       color:
-                        phoneInfo.tone === 'valid' ? '#28D75A' : phoneInfo.tone === 'invalid' ? '#FF6B6B' : 'var(--text-muted)',
+                        phoneInfo.tone === 'valid' ? '#15803D' : phoneInfo.tone === 'invalid' ? '#DC2626' : 'var(--text-muted)',
                     }}
                   >
                     {phoneInfo.text}
@@ -401,14 +402,14 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                   </span>
                 </label>
                 {formError && (
-                  <p className="text-sm" style={{ color: '#FF6B6B' }}>{formError}</p>
+                  <p className="text-sm" style={{ color: '#DC2626' }}>{formError}</p>
                 )}
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   className="mt-4 px-6 py-4 rounded-lg text-sm font-semibold transition-all duration-300 bg-[#3D5A80] hover:bg-[#4a6a96] disabled:opacity-50"
                   style={{
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    border: '1px solid #34496a',
                     color: '#fff',
                   }}
                 >
@@ -423,8 +424,8 @@ export default function ContactFlow({ isOpen, onClose }: ContactFlowProps) {
                 onClick={() => setStep(1)}
                 className="px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-300"
                 style={{
-                  background: 'rgba(61,90,128,0.25)',
-                  border: '1px solid rgba(61,90,128,0.5)',
+                  background: '#3D5A80',
+                  border: '1px solid #34496a',
                   color: '#fff',
                 }}
               >

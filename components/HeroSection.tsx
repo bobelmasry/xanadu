@@ -88,7 +88,7 @@ export default function HeroSection() {
           height={472}
           fetchPriority="high"
           className="mx-auto h-64 w-64 mb-10 object-contain"
-          style={{ filter: 'drop-shadow(0 0 22px rgba(61,90,128,0.45))' }}
+          style={{ filter: 'drop-shadow(0 4px 24px rgba(61,90,128,0.25))' }}
         />
         <h1
           ref={titleRef}
@@ -111,7 +111,7 @@ export default function HeroSection() {
           className="text-xl sm:text-2xl md:text-3xl font-light js-hidden"
           style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-heading)' }}
         >
-          They grow in <span style={{ color: '#fff', fontWeight: 500 }}>fragments</span>.
+          They grow in <span style={{ color: 'var(--accent-primary)', fontWeight: 500 }}>fragments</span>.
         </p>
       </div>
 
@@ -125,8 +125,8 @@ export default function HeroSection() {
           Scroll to explore
         </span>
         <svg width="20" height="30" viewBox="0 0 20 30" fill="none" aria-hidden="true">
-          <rect x="1" y="1" width="18" height="28" rx="9" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
-          <circle cx="10" cy="10" r="2.5" fill="rgba(255,255,255,0.5)">
+          <rect x="1" y="1" width="18" height="28" rx="9" stroke="rgba(15,23,42,0.25)" strokeWidth="1.5" />
+          <circle cx="10" cy="10" r="2.5" fill="rgba(15,23,42,0.45)">
             <animate attributeName="cy" values="10;18;10" dur="2s" repeatCount="indefinite" />
           </circle>
         </svg>

@@ -16,7 +16,7 @@ The roadmap's original metaphor was a fragmented line that connects and smooths 
 
 The site was built using a modern, high-performance tech stack:
 - **Framework:** Next.js 16 (App Router, Turbopack) with React 19 and TypeScript.
-- **Styling:** Tailwind CSS 3 combined with a custom CSS variable design system (`globals.css`) to enforce the dark, premium aesthetic (`#050508` background with glassmorphism cards).
+- **Styling:** Tailwind CSS 3 combined with a custom CSS variable design system (`globals.css`) enforcing a light, premium aesthetic (`#ffffff` background with soft glassmorphism cards; the near-white `parts/base.png` silhouette was recolored to navy via `scripts/recolor-light-theme.py`).
 - **Typography:** Google Fonts (`Outfit` for cinematic headings via `--font-heading`, `Inter` for body text via `--font-body`). Loaded in `app/layout.tsx` as `--font-outfit` / `--font-inter` and bridged to the design-system names in `globals.css`.
 - **Animation Engine:** **GSAP** (GreenSock Animation Platform) combined with **ScrollTrigger** drives all the scroll-linked animations.
 - **Smooth Scrolling:** **Lenis** was integrated to override the default browser scroll, ensuring the animations remain perfectly smooth and buttery across all devices.
@@ -31,7 +31,8 @@ The fixed/overlay elements are layered by `zIndex` — this order is load-bearin
 The single-page experience (`app/page.tsx`) flows chronologically through the following sections:
 
 1. **Hero Section:** The cinematic opening with a staggered word-reveal animation and the initial fragmented line.
-2. **Subsidiary Sections (6x):** Reusable `SubsidiarySection` components display the brand logo mark, hook, description, and glassmorphism "service pills". Each section has a unique accent color:
+2. **About ("Who are we?"):** A breather section explaining the Xanadu system — the first chapter after the hero.
+3. **"Our Subsidiaries" intro + Subsidiary Sections (6x):** A chapter heading, then one slim section per subsidiary (name + logo + a single sentence + "Learn more") that drives the logo assembly. Reusable `SubsidiarySection` components render each subsidiary's brand logo mark; the heavy copy (about / services / clients / partners / portfolio) lives on the `/subsidiaries/[slug]` detail pages. Each section has a unique accent color:
    - **Consulting** (Green `#28D75A`)
    - **Soft** (Blue `#4176FA`)
    - **Sports** (Red-Orange `#FF4E33`)
@@ -40,9 +41,8 @@ The single-page experience (`app/page.tsx`) flows chronologically through the fo
    - **Xw3** (Purple `#9344DE`)
    
     Generic UI accents (focus rings, glows, buttons) use a navy-derived primary `#3D5A80` rather than any single subsidiary color. The group mark is shipped as PNGs — `/logos/holding.png` in the Hero and `/logos/group.png` in the Header + Final CTA footer (the earlier inline `<BrandMark>` SVG was removed with the PNG-slice assembly model).
- 3. **Ecosystem & Validation:** 
-    - **About:** A breather section explaining the Xanadu system.
-    - **Investments:** An interactive grid of expandable cards detailing portfolio companies like Origin CX, Foras Fen, Qualiphi, Hatoon, Derma Egypt, and Ukaz.
+ 4. **Ecosystem & Validation:**
+     - **Investments:** An interactive grid of expandable cards detailing portfolio companies like Origin CX, Foras Fen, Qualiphi, Hatoon, Derma Egypt, and Ukaz.
     - **Partners:** A logo grid of 20+ partners (static, with a scroll-reveal).
     - **Network:** Highlights the benefits of Xanadu's activated network, with a lazy-loaded interactive MapLibre map of the MENA region.
 
@@ -53,7 +53,7 @@ To ensure the site feels truly premium and state-of-the-art, several micro-inter
 > [!TIP]
 > **Premium Micro-interactions**
 > - **Loading Screen:** A 1.5-second cinematic loading sequence that masks the background calculations required by GSAP to map the SVG lines perfectly to the scroll height.
-> - **Particle Field:** A subtle, slow-drifting HTML canvas particle system that lives behind the entire site, giving the dark background depth and atmosphere.
+> - **Particle Field:** A subtle, slow-drifting HTML canvas particle system (navy "ink dust") that lives behind the entire site, giving the light background depth and atmosphere.
 > - **Custom Cursor:** On desktop devices, the default mouse is replaced with a custom glowing dot and trailing ring that reacts and expands when hovering over clickable elements.
 
 > [!IMPORTANT]

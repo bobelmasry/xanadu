@@ -27,6 +27,14 @@ const nextConfig = {
 
     return [{ source: '/:path*', headers }]
   },
+  async redirects() {
+    return [
+      // "Our Portfolio" was renamed "Our Work" and moved to /work; the founder
+      // page was folded into /about. Keep old links working (301 for SEO).
+      { source: '/portfolio', destination: '/work', permanent: true },
+      { source: '/founder', destination: '/about', permanent: true },
+    ]
+  },
 }
 
 module.exports = nextConfig

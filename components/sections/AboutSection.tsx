@@ -20,15 +20,15 @@ export default memo(function AboutSection() {
     >
       <div className="section-container max-w-3xl mx-auto text-center">
         <p className="about-reveal text-sm uppercase tracking-[0.3em] mb-6" style={{ color: 'var(--text-muted)' }}>
-          About Xanadu
+          About Us
         </p>
 
         <h2
           className="about-reveal text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-8"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
-          Global vision,{' '}
-          <span className="text-gradient">local execution.</span>
+          Who are we?{' '}
+          <span className="text-gradient">Global vision, local execution.</span>
         </h2>
 
         <p className="about-reveal text-lg leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>

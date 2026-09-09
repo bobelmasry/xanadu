@@ -40,7 +40,7 @@ export default function ResultScreen({ routing, headingRef, isSubmitting, submit
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <button
-          className="glass-card p-6 text-left transition-all duration-300 hover:bg-white/5 disabled:opacity-50"
+          className="glass-card p-6 text-left transition-all duration-300 hover:bg-slate-900/[0.03] disabled:opacity-50"
           disabled={isSubmitting}
           onClick={() => onChoose('free')}
         >
@@ -62,7 +62,7 @@ export default function ResultScreen({ routing, headingRef, isSubmitting, submit
       </div>
 
       {submitError && (
-        <p className="mt-6 text-sm" style={{ color: '#FF6B6B' }}>{submitError}</p>
+        <p className="mt-6 text-sm" style={{ color: '#DC2626' }}>{submitError}</p>
       )}
     </div>
   )

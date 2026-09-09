@@ -49,7 +49,7 @@ export default memo(function PortfolioGrid({
                 {p.stealth && (
                   <span
                     className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full"
-                    style={{ background: 'rgba(255,255,255,0.06)', color: 'var(--text-muted)' }}
+                    style={{ background: 'rgba(15,23,42,0.05)', color: 'var(--text-muted)' }}
                   >
                     Stealth
                   </span>

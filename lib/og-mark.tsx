@@ -55,7 +55,7 @@ export function BrandHexagon({
   )
 }
 
-/** The 1200×630 social scene: dark gradient + a glowing centered hexagon. */
+/** The 1200×630 social scene: light gradient + a centered hexagon. */
 export function OgScene() {
   const backdrop = hexPaths(0, 0, 300)
   const glow = hexPaths(0, 0, 160)
@@ -68,16 +68,16 @@ export function OgScene() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(135deg,#050508 0%,#0a0b10 55%,#0d0f16 100%)',
+        background: 'linear-gradient(135deg,#ffffff 0%,#f6f8fa 55%,#eef2f7 100%)',
       }}
     >
       <svg width="480" height="480" viewBox="-340 -340 680 680">
-        <circle cx="0" cy="0" r="220" fill="#3D5A80" opacity="0.07" />
+        <circle cx="0" cy="0" r="220" fill="#3D5A80" opacity="0.06" />
         {backdrop.map((e, i) => (
-          <path key={`b${i}`} d={e.d} stroke="#ffffff" strokeWidth="3" fill="none" opacity="0.07" />
+          <path key={`b${i}`} d={e.d} stroke="#3D5A80" strokeWidth="3" fill="none" opacity="0.1" />
         ))}
         {glow.map((e, i) => (
-          <path key={`g${i}`} d={e.d} stroke={e.color} strokeWidth="34" fill="none" opacity="0.22" />
+          <path key={`g${i}`} d={e.d} stroke={e.color} strokeWidth="34" fill="none" opacity="0.18" />
         ))}
         {main.map((e, i) => (
           <path key={`m${i}`} d={e.d} stroke={e.color} strokeWidth="18" strokeLinecap="round" fill="none" />
@@ -87,7 +87,7 @@ export function OgScene() {
   )
 }
 
-/** The 32×32 favicon scene: dark bg + the colored hexagon. */
+/** The 32×32 favicon scene: light bg + the colored hexagon. */
 export function IconScene() {
   return (
     <div
@@ -97,7 +97,7 @@ export function IconScene() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#050508',
+        background: '#ffffff',
       }}
     >
       <BrandHexagon r={78} stroke={26} pad={22} px={32} />

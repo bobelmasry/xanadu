@@ -72,8 +72,8 @@ export default memo(function PartnersSection() {
                   className="text-sm font-semibold tracking-wide px-4 py-2 rounded-lg"
                   style={{
                     color: 'var(--text-secondary)',
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    background: 'rgba(15,23,42,0.03)',
+                    border: '1px solid rgba(15,23,42,0.1)',
                   }}
                 >
                   {partner.name}
@@ -85,7 +85,7 @@ export default memo(function PartnersSection() {
 
         <p className="partner-reveal text-lg italic" style={{ color: 'var(--text-muted)' }}>
           Driving innovation and growth through{' '}
-          <span style={{ color: '#fff' }}>powerful collaborations</span>.
+          <span style={{ color: 'var(--text-primary)' }}>powerful collaborations</span>.
         </p>
       </div>
     </section>

@@ -1,10 +1,11 @@
 import type { ComponentType } from 'react'
 import { SUBSIDIARY_IDS } from '../lib/subsidiaries'
 import HeroSection from './HeroSection'
+import AboutSection from './sections/AboutSection'
+import SubsidiariesIntroSection from './sections/SubsidiariesIntroSection'
 import ConsultingSection from './sections/ConsultingSection'
 import SoftSection from './sections/SoftSection'
 import SportsSection from './sections/SportsSection'
-import AboutSection from './sections/AboutSection'
 import VenturesSection from './sections/VenturesSection'
 import TradingSection from './sections/TradingSection'
 import Xw3Section from './sections/Xw3Section'
@@ -24,9 +25,12 @@ import FinalCTA from './FinalCTA'
  * match (BrandMarkAssembly measures bands by `getElementById(layer.id)` and
  * the dot nav + coupling tests key off these ids).
  *
- * Adding a subsidiary: add the entry in `lib/subsidiaries.ts` order (the
- * about section intentionally sits between sports and ventures) and update
- * BrandMarkAssembly.LAYERS + a `/logos/parts/<id>.png` slice + sitemap.
+ * Chapter order: hero → "Who are we" (about) → the "Our Subsidiaries"
+ * chapter (intro heading + the six subsidiary sections in `lib/subsidiaries.ts`
+ * order) → investments → partners → network → final CTA.
+ *
+ * Adding a subsidiary: add the entry in `lib/subsidiaries.ts` order and
+ * update BrandMarkAssembly.LAYERS + a `/logos/parts/<id>.png` slice + sitemap.
  */
 
 /** Props superset every section in the journey tolerates (all optional). */
@@ -45,10 +49,11 @@ export interface JourneySection {
 
 export const HOME_JOURNEY: JourneySection[] = [
   { id: 'hero', label: 'Start', Component: HeroSection },
+  { id: 'about', label: 'About', Component: AboutSection },
+  { id: 'our-subsidiaries', label: 'Subsidiaries', Component: SubsidiariesIntroSection },
   { id: 'consulting', label: 'Consulting', Component: ConsultingSection },
   { id: 'soft', label: 'Soft', Component: SoftSection },
   { id: 'sports', label: 'Sports', Component: SportsSection },
-  { id: 'about', label: 'About', Component: AboutSection },
   { id: 'ventures', label: 'Ventures', Component: VenturesSection },
   { id: 'trading', label: 'Trading', Component: TradingSection },
   { id: 'xw3', label: 'Web3', Component: Xw3Section },
