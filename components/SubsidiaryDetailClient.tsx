@@ -18,10 +18,10 @@ export default function SubsidiaryDetailClient({ id }: { id: string }) {
 
   return (
     <main className="pt-16">
-      <div className="section-container pt-8">
+      <div className="section-container">
         <Link
           href="/subsidiaries"
-          className="inline-flex items-center gap-2 text-sm transition-opacity hover:opacity-70"
+          className="inline-flex items-center gap-2 mt-12 text-sm transition-opacity hover:opacity-70"
           style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-heading)' }}
         >
           ← All subsidiaries

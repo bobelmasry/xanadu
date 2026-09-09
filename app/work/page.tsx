@@ -147,10 +147,10 @@ export default function WorkPage() {
           </div>
         </section>
 
-        <div className="mt-16 pt-8" style={{ borderTop: '1px solid rgba(15, 23, 42, 0.08)' }}>
+        <div>
           <Link
             href="/#final-cta"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-85"
+            className="inline-flex items-center mb-12 gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-85"
             style={{
               background: '#3D5A80',
               color: '#fff',

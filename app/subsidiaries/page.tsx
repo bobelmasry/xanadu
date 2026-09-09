@@ -10,8 +10,19 @@ export const metadata = {
 
 export default function SubsidiariesPage() {
   return (
-    <main className="relative min-h-screen" style={{ background: 'var(--bg-primary)' }}>
-      <article className="section-container pt-32 md:pt-40 pb-24">
+    <main className="relative min-h-screen mb-32" style={{ background: 'var(--bg-primary)' }}>
+      
+      <article className="section-container">
+        <div className="mt-16 pt-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 mb-12 text-sm font-medium transition-opacity hover:opacity-80"
+            style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-heading)' }}
+          >
+            ← Back to home
+          </Link>
+        </div>
+
         <p
           className="text-sm uppercase tracking-[0.3em] mb-6"
           style={{ color: 'var(--text-muted)' }}
@@ -88,19 +99,6 @@ export default function SubsidiariesPage() {
               </span>
             </Link>
           ))}
-        </div>
-
-        <div
-          className="mt-16 pt-8"
-          style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-80"
-            style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-heading)' }}
-          >
-            ← Back to home
-          </Link>
         </div>
       </article>
     </main>

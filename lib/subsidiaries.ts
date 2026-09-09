@@ -80,7 +80,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
       { name: 'Nabda', logo: '/partners/nabda.png' },
       { name: 'Contrato', logo: '/partners/contrato.png' },
       { name: 'Al Zamil' },
-      { name: 'Bekiaa', logo: '/partners/bekiaa.png' },
+      { name: 'Bekiaa', logo: '/partners/bekia.png' },
     ],
   },
   {
