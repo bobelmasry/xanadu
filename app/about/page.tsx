@@ -158,7 +158,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <div className="mt-16 pt-8" style={{ borderTop: '1px solid rgba(15, 23, 42, 0.08)' }}>
+        <div className="mb-12">
           <Link
             href="/#final-cta"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-85"
