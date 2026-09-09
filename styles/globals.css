@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════
+   XANADU DESIGN SYSTEM
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* ── Base Colors ── */
+  --bg-primary: #050508;
+  --bg-secondary: #0a0b10;
+  --bg-card: rgba(15, 17, 22, 0.6);
+  --bg-card-hover: rgba(20, 22, 30, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  /* ≥4.5:1 on --bg-primary (#050508) — the old #6b6b7b measured ~3.9:1,
+     below the WCAG AA threshold for the small text this token is used for. */
+  --text-muted: #8b8b9c;
+
+  /* ── Brand / Group ── */
+  --color-group: #151923;
+  --accent-primary: #3D5A80;
+  --accent-primary-rgb: 61, 90, 128;
+
+  /* ── Subsidiary Colors ── */
+  --color-consulting: #28D75A;
+  --color-soft: #4176FA;
+  --color-sports: #FF4E33;
+  --color-ventures: #FFD21F;
+  --color-trading: #4D7CFF;
+  --color-xw3: #9344DE;
+  --color-investments: #D9B00D;
+
+  /* ── Glow variants ── */
+  --glow-consulting: 0 0 20px rgba(40, 215, 90, 0.4);
+  --glow-soft: 0 0 20px rgba(65, 118, 250, 0.4);
+  --glow-sports: 0 0 20px rgba(255, 78, 51, 0.4);
+  --glow-ventures: 0 0 20px rgba(255, 210, 31, 0.4);
+  --glow-trading: 0 0 20px rgba(77, 124, 255, 0.4);
+  --glow-xw3: 0 0 20px rgba(147, 68, 222, 0.4);
+
+  /* ── Typography ── */
+  --font-heading: var(--font-outfit), 'Outfit', sans-serif;
+  --font-body: var(--font-inter), 'Inter', sans-serif;
+
+  /* ── Spacing ── */
+  --section-padding: clamp(4rem, 10vh, 8rem);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(var(--accent-primary-rgb), 0.45);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ═══════════════════════════════════════════ */
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px currentColor); }
+  50% { filter: drop-shadow(0 0 12px currentColor); }
+}
+
+/* Respect prefers-reduced-motion for CSS-driven motion (the loading spinner,
+   scroll-bounce, breathing/float glows, etc.). JS-driven motion is gated
+   separately in each component (Lenis, ParticleField, CustomCursor, GSAP
+   infinite tweens). */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════ */
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  /* Explicit properties, not `all` — transitioning backdrop-filter/filter
+     forces repaints of the particle canvas behind every card on hover. */
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+/* GSAP scroll-reveal items start hidden so they don't flash visible for one
+   frame before the useEffect `fromTo` runs (GSAP reveals them on scroll).
+   Scoped to html.js (a class added by an inline pre-paint script in the root
+   layout) so that without JS the content stays visible — progressive
+   enhancement, no invisible page for no-JS / failed-JS users. */
+html.js .reveal-item { opacity: 0; }
+html.js .js-hidden { opacity: 0; }
+
+.contact-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* iOS Safari auto-zooms the viewport when focusing inputs < 16px — bump to
+   16px on phone widths so the contact modal doesn't jump around. */
+@media (max-width: 767px) {
+  .contact-input {
+    font-size: 1rem;
+  }
+}
+
+.contact-input::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: rgba(var(--accent-primary-rgb), 0.6);
+  box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.15);
+}
+
+/* Subsidiary CTA — per-instance accent colors are threaded in via CSS custom
+    properties (set inline from each section's `color` prop) so the
+    hover/focus transition is fully declarative (no JS DOM mutation, and the
+    CTA gets the same highlight on keyboard focus as on hover). Defined after
+    .glass-card so the per-instance border-color wins at rest. */
+.svc-cta {
+  background: var(--cta-bg);
+  border: 1px solid var(--cta-border);
+  color: var(--cta-color);
+}
+.svc-cta:hover,
+.svc-cta:focus-visible {
+  background: var(--cta-bg-hover);
+  box-shadow: var(--cta-glow);
+}
+
+/* ═══ MapLibre MENA map (Network section) ═══ */
+.mena-map .maplibregl-popup-content {
+  font-family: var(--font-body);
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 18px rgba(10, 20, 35, 0.25);
+}
+
+.mena-map .maplibregl-ctrl-attrib {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 8px 0 0 0;
+}
+
+/* City markers — sized via classes (not inline styles) so phones get smaller
+   dots where the GCC cities cluster tightly at region zoom. */
+.mena-marker {
+  display: block;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #9fb6d4;
+  box-shadow: 0 1px 4px rgba(15, 25, 40, 0.35);
+  cursor: pointer;
+}
+
+.mena-marker--hub {
+  width: 18px;
+  height: 18px;
+  background: #3d5a80;
+  color: #3d5a80; /* pulseGlow animates drop-shadow(currentColor) */
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* Google-Maps-style chip bar: thin scrollbar on phones, none on >=sm. */
+.mena-chips {
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 639px) {
+  .mena-marker {
+    width: 11px;
+    height: 11px;
+    border-width: 1.5px;
+  }
+
+  .mena-marker--hub {
+    width: 15px;
+    height: 15px;
+  }
+}
