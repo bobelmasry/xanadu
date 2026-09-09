@@ -88,8 +88,8 @@ export default function SubsidiarySection({
     <section
       ref={sectionRef}
       id={id}
-      className={variant === 'summary' ? 'relative py-8 sm:py-14 md:py-24' : 'relative py-24 sm:py-32 md:py-40'}
-      style={{ minHeight: variant === 'summary' ? '70vh' : '80vh' }}
+      className={variant === 'summary' ? 'relative min-h-[45vh] py-8 sm:py-14 md:min-h-[70vh] md:py-24' : 'relative py-24 sm:py-32 md:py-40'}
+      style={{ minHeight: variant === 'summary' ? undefined : '80vh' }}
     >
       <div className="section-container">
         <div
