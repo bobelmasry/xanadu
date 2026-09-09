@@ -1,8 +1,0 @@
-if there are any spelling mistakes, fix it
-1. In the home page, we want it to start with the about us, and make the title who are we.
-2. I want the layout to be the same as the subsidaries, so in the home page it has that layout and only 1 sentece about the subsidiary, and we it to have title, the same as about us but in this case would be out subsidaries 
-3. the tab of the subsidaries should be a drop out and when we click on it the subsidaries appear, and we can choose the subsidary we want. then it redirect us to the page that has the info of the subsidaries, and in that page, it has all info of the subsidary, and it should have the about us, clients, parterns of that subsidary, and the call of action
-4. want to change the naming fro our protifolio to our work, and when we click on it it would have our protifolo, and our work, clients, and the projects we have
-5. regarding the founder tab I want to remove that and include it in the about us. 
-6. we want a tab that is titled about us and has more details about the company and the founder. 
-7. we want the website to be white background not black 
