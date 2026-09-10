@@ -105,18 +105,18 @@ export default function SubsidiarySection({
               supporting sub-headline instead of overshadowing it.
               flex-wrap + smaller mobile scale so the row never clips off the
               right edge on narrow phones — the logo drops below the name. */}
-          <div className={variant === 'summary' ? 'mb-8 flex flex-wrap items-center gap-x-4 gap-y-3' : 'mb-12 md:mb-16 flex flex-wrap items-center gap-x-4 gap-y-3'}>
+          <div className={variant === 'summary' ? 'mb-8 flex flex-nowrap items-center gap-x-4 gap-y-3' : 'mb-12 md:mb-16 flex flex-nowrap items-center gap-x-4 gap-y-3'}>
             {variant === 'full' ? (
               /* Detail page: the subsidiary name is the page's single <h1>. */
               <h1
-                className="text-3xl sm:text-5xl md:text-7xl font-black uppercase tracking-[0.15em]"
+                className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-[0.15em]"
                 style={{ fontFamily: 'var(--font-heading)', color }}
               >
                 {name}
               </h1>
             ) : (
               <span
-                className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-[0.15em]"
+                className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-[0.15em]"
                 style={{ fontFamily: 'var(--font-heading)', color }}
               >
                 {name}
@@ -132,7 +132,6 @@ export default function SubsidiarySection({
                 height={224}
                 loading="lazy"
                 className="h-16 w-16 sm:h-24 sm:w-24 shrink-0 object-contain"
-                style={{ filter: `drop-shadow(0 0 10px ${color})` }}
               />
             )}
           </div>
