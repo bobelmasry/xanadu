@@ -12,6 +12,7 @@ import {
   Xw3Section,
   InvestmentsSection,
   PartnersSection,
+  MapSection,
   NetworkSection,
   SectionProps,
 } from './homeSections'
@@ -37,6 +38,7 @@ export const HOME_JOURNEY: JourneySection[] = [
   { id: 'xw3', label: 'Web3', Component: Xw3Section },
   { id: 'investments', label: 'Investments', Component: InvestmentsSection },
   { id: 'partners', label: 'Partners', Component: PartnersSection },
+  { id: 'map', label: 'Map', Component: MapSection },
   { id: 'network', label: 'Network', Component: NetworkSection },
   { id: 'final-cta', label: 'Connect', Component: FinalCTA },
 ]
