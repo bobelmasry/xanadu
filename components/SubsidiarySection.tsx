@@ -47,7 +47,7 @@ function LogoChip({ entry, accent }: { entry: LogoEntry; accent: string }) {
         src={entry.logo}
         alt={entry.name}
         loading="lazy"
-        className="h-9 w-auto max-w-[120px] object-contain px-3 py-1.5 rounded-lg"
+        className="h-14 w-auto max-w-[140px] object-contain px-3 py-1.5 rounded-lg"
         style={{ background: 'var(--bg-card)', border: '1px solid var(--chip-border)' }}
       />
     )
