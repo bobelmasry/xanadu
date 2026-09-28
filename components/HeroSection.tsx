@@ -121,9 +121,6 @@ export default function HeroSection() {
         className="absolute bottom-12 flex flex-col items-center gap-3"
         style={{ animation: 'scrollBounce 2s ease-in-out infinite' }}
       >
-        <span className="text-sm tracking-widest uppercase" style={{ color: 'var(--text-muted)', letterSpacing: '0.2em' }}>
-          Scroll to explore
-        </span>
         <svg width="20" height="30" viewBox="0 0 20 30" fill="none" aria-hidden="true">
           <rect x="1" y="1" width="18" height="28" rx="9" stroke="rgba(15,23,42,0.25)" strokeWidth="1.5" />
           <circle cx="10" cy="10" r="2.5" fill="rgba(15,23,42,0.45)">

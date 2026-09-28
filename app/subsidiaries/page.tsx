@@ -68,7 +68,6 @@ export default function SubsidiariesPage() {
                   height={224}
                   loading="lazy"
                   className="h-16 w-16 object-contain"
-                  style={{ filter: `drop-shadow(0 0 12px ${s.color})` }}
                 />
                 <span
                   className="h-2.5 w-2.5 rounded-full mt-2"

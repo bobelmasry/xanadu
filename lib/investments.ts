@@ -14,6 +14,7 @@ export interface CaseStudy {
 
 export interface Investment {
   name: string
+  logo?: string
   overview: string
   services: string[]
   value: string
@@ -23,6 +24,7 @@ export interface Investment {
 export const INVESTMENTS: Investment[] = [
   {
     name: 'Origin CX',
+    logo: '/investments/origincx.jpeg',
     overview: "MENA's first end-to-end, tech-enabled customer experience consultancy.",
     services: ['Omnichannel CX design', 'Real-time support systems', 'CX automation'],
     value: 'Exclusive regional partner of Zendesk, with integrations across SAP Emarsys, Infobip, Gameball.',
@@ -35,6 +37,7 @@ export const INVESTMENTS: Investment[] = [
   },
   {
     name: 'Foras Fen',
+    logo: '/investments/foras_fein.jpeg',
     overview: 'A business discovery platform sharing opportunities, market insights, and emerging trends.',
     services: ['Curate business opportunities', 'Market insights & news', 'Emerging sector highlights'],
     value: 'Acts as an opportunity engine — giving access to deals before they become widely visible.',
@@ -47,6 +50,7 @@ export const INVESTMENTS: Investment[] = [
   },
   {
     name: 'Qualiphi',
+    logo: '/investments/Qualiphi.jpeg',
     overview: "MEA's first AI-powered career services platform connecting students, universities, and employers.",
     services: ['AI-powered job matching', 'Career development tools', 'University career management'],
     value: 'Access to 500,000+ students and graduates across 40+ universities.',
@@ -59,6 +63,7 @@ export const INVESTMENTS: Investment[] = [
   },
   {
     name: 'Hatoon Industries',
+    logo: '/investments/hatoon.jpeg',
     overview: 'A leading Egyptian company in personal care and health via direct selling and digital commerce.',
     services: ['Health products', 'Direct selling networks', 'E-commerce distribution'],
     value: 'Strong regional presence with scalable network-driven growth model.',

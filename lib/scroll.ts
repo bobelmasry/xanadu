@@ -10,12 +10,12 @@ export function getLenis() {
   return instance
 }
 
-export function scrollToId(id: string) {
+export function scrollToId(id: string, duration?: number) {
   if (typeof document === 'undefined') return
   const el = document.getElementById(id)
   if (!el) return
   if (instance) {
-    instance.scrollTo(el, { offset: 0 })
+    instance.scrollTo(el, { offset: 0, ...(duration === undefined ? {} : { duration }) })
   } else {
     el.scrollIntoView({ behavior: 'smooth' })
   }
