@@ -4,6 +4,8 @@ import React, { memo, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import worldMap from 'world-atlas/countries-110m.json'
 import SubsidiarySection from '../components/SubsidiarySection'
 import PortfolioGrid from '../components/PortfolioGrid'
 import { getSubsidiary, SUBSIDIARIES } from '../lib/subsidiaries'
@@ -32,10 +34,12 @@ export const SubsidiariesIntroSection = memo(function SubsidiariesIntroSection()
     <p className="subs-reveal text-sm uppercase tracking-[0.3em] mb-6" style={{ color: 'var(--text-muted)' }}>Our Subsidiaries</p>
     <h2 className="subs-reveal text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-8" style={{ fontFamily: 'var(--font-heading)' }}>Six specialized companies. <span className="text-gradient">One continuous system.</span></h2>
     <p className="subs-reveal text-lg leading-relaxed mb-8" style={{ color: 'var(--text-secondary)' }}>Each subsidiary operates independently — and each one feeds the others. Explore how the Xanadu companies work together.</p>
-    <div className="subs-reveal flex items-center justify-center gap-4 sm:gap-6 mb-10" aria-label="Xanadu subsidiaries">
+    <div className="subs-reveal mx-auto mb-10 grid w-full max-w-sm grid-cols-3 items-center justify-items-center gap-x-6 gap-y-5 sm:flex sm:justify-center sm:gap-6" aria-label="Xanadu subsidiaries">
       {SUBSIDIARIES.map((subsidiary) => (
-        // eslint-disable-next-line @next/next/no-img-element -- subsidiary logo
-        <img key={subsidiary.id} src={subsidiary.logo} alt={subsidiary.name} className="h-9 w-9 object-contain sm:h-11 sm:w-11" loading="lazy" />
+        <div key={subsidiary.id} className="flex h-11 w-11 shrink-0 items-center justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element -- subsidiary logo */}
+          <img src={subsidiary.logo} alt={subsidiary.name} className="h-auto w-full object-contain" loading="lazy" />
+        </div>
       ))}
     </div>
     <button type="button" onClick={() => scrollToId('consulting', 2.2)} className="subs-reveal group inline-flex items-center gap-3 px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.18em] font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2" style={{ color: 'var(--accent-primary)', background: 'rgba(var(--accent-primary-rgb), 0.08)', border: '1px solid rgba(var(--accent-primary-rgb), 0.28)', boxShadow: '0 8px 24px rgba(var(--accent-primary-rgb), 0.1)' }}>
@@ -86,7 +90,7 @@ export const InvestmentsSection = memo(function InvestmentsSection({ variant = '
   </div></section>
 })
 
-const PARTNERS = [{ name: 'SMG', logo: '/partners/smg.png' }, { name: 'Entourage', logo: '/partners/entourage.png' }, { name: 'Ye Sports', logo: '/partners/ye-sports.png' }, { name: 'Winfi', logo: '/partners/winfi.png' }, { name: 'Bricks', logo: '/partners/bricks.png' }, { name: 'Tremoloo', logo: '/partners/tremoloo.png' }, { name: 'Odoo', logo: '/partners/odoo.png' }, { name: 'Clio', logo: '/partners/clio.png' }, { name: 'Cloudbeds', logo: '/partners/cloudbeds.png' }, { name: 'Asfaleia', logo: '/partners/asfaleia.png' }, { name: 'Taager', logo: '/partners/taager.png' }, { name: 'Nabda', logo: '/partners/nabda.png' }, { name: 'Influencer Hero' }, { name: 'Beacons.ai', logo: '/partners/beacons.png' }, { name: 'El Shawaraby' }, { name: 'Contrato', logo: '/partners/contrato.png' }, { name: 'Al Zamil' }, { name: 'Bekiaa', logo: '/partners/bekia.png' }, { name: 'Zendesk', logo: '/partners/zendesk.png' }, { name: 'Infobip', logo: '/partners/infobip.png' }, { name: 'Gameball', logo: '/partners/gameball.png' }]
+const PARTNERS = [{ name: 'SMG', logo: '/partners/smg.png' }, { name: 'Entourage', logo: '/partners/entourage.png' }, { name: 'Ye Sports', logo: '/partners/ye-sports.png' }, { name: 'Winfi', logo: '/partners/winfi.png' }, { name: 'Bricks', logo: '/partners/bricks.png' }, { name: 'Tremoloo', logo: '/partners/tremoloo.png' }, { name: 'Odoo', logo: '/partners/odoo.png' }, { name: 'Clio', logo: '/partners/clio.png' }, { name: 'Cloudbeds', logo: '/partners/cloudbeds.png' }, { name: 'Asfaleia', logo: '/partners/asfaleia.png' }, { name: 'Taager', logo: '/partners/taager.png' }, { name: 'Nabda', logo: '/partners/nabda.png' }, { name: 'Influencer Hero', logo: '/partners/influencer_hero.png' }, { name: 'Beacons.ai', logo: '/partners/beacons.png' }, { name: 'El Shawaraby', logo : '/partners/elshawarby.png' }, { name: 'Contrato', logo: '/partners/contrato.png' }, { name: 'Al Zamil', logo : '/partners/al_zamil.png' }, { name: 'Bekiaa', logo: '/partners/bekia.png' }, { name: 'Zendesk', logo: '/partners/zendesk.png' }, { name: 'Infobip', logo: '/partners/infobip.png' }, { name: 'Gameball', logo: '/partners/gameball.png' }]
 export const PartnersSection = memo(function PartnersSection() {
   const ref = useRef<HTMLElement>(null)
   useRevealOnScroll(ref, { selector: '.partner-reveal', y: 30, duration: 0.8, stagger: 0.06, start: 'top 75%' })
@@ -95,14 +99,48 @@ export const PartnersSection = memo(function PartnersSection() {
 
 export const MapSection = memo(function MapSection() {
   const ref = useRef<HTMLElement>(null)
+  const [activeCountry, setActiveCountry] = useState('Egypt')
   useRevealOnScroll(ref, { selector: '.map-reveal', y: 24, duration: 0.8, start: 'top 78%' })
+  const countries = [
+    { name: 'Egypt', region: 'North Africa', coordinates: [30.8, 26.8] as [number, number], description: 'A central hub for our regional operations.' },
+    { name: 'Oman', region: 'Gulf', coordinates: [57.5, 21.5] as [number, number], description: 'Our gateway into the Gulf and wider region.' },
+    { name: 'Mauritius', region: 'Indian Ocean', coordinates: [57.5, -20.2] as [number, number], description: 'Our bridge to African and island markets.' },
+  ]
+  const selectedCountry = countries.find((country) => country.name === activeCountry) ?? countries[0]
+
   return <section ref={ref} id="map" className="py-12 md:py-20">
     <div className="section-container text-center">
       <p className="map-reveal mb-4 text-sm uppercase tracking-[0.3em]" style={{ color: 'var(--text-muted)' }}>Where we operate</p>
       <h2 className="map-reveal mb-8 text-3xl font-bold sm:text-4xl" style={{ fontFamily: 'var(--font-heading)' }}>A network with regional reach.</h2>
-      <figure className="map-reveal mx-auto max-w-3xl overflow-hidden rounded-2xl border p-2 sm:p-3" style={{ background: 'rgba(255,255,255,0.72)', borderColor: 'rgba(61,90,128,0.16)', boxShadow: '0 20px 55px rgba(15,23,42,0.08)' }}>
-        <img src="/brand/map.png" alt="Map showing Xanadu operations in Egypt, Oman, and Mauritius" loading="lazy" className="h-auto w-full rounded-xl" />
-      </figure>
+      <div className="map-reveal mx-auto grid max-w-5xl gap-6 overflow-hidden rounded-2xl border p-4 text-left sm:p-6 lg:grid-cols-[minmax(0,1fr)_220px]" style={{ background: 'rgba(255,255,255,0.72)', borderColor: 'rgba(61,90,128,0.16)', boxShadow: '0 20px 55px rgba(15,23,42,0.08)' }}>
+        <div className="relative overflow-hidden rounded-xl border" style={{ background: '#edf3f6', borderColor: 'rgba(61,90,128,0.12)' }}>
+          <ComposableMap aria-label="World map showing Xanadu operations in Egypt, Oman, and Mauritius" projection="geoEqualEarth" projectionConfig={{ scale: 150, center: [20, 5] }} width={800} height={430} className="block h-auto w-full">
+            <Geographies geography={worldMap}>
+              {({ geographies }) => geographies.map((geo) => {
+                const country = countries.find((item) => item.name === geo.properties.name)
+                const isActive = country?.name === activeCountry
+                return <Geography key={geo.rsmKey ?? geo.id} geography={geo} fill={country ? 'var(--accent-primary)' : '#d8e3e7'} fillOpacity={country ? (isActive ? 0.95 : 0.62) : 1} stroke="#ffffff" strokeWidth={0.55} style={{ default: { outline: 'none' }, hover: { outline: 'none', fill: country ? 'var(--accent-primary)' : '#c8d8dd' }, pressed: { outline: 'none' } }} />
+              })}
+            </Geographies>
+            {countries.map((country) => <Marker key={country.name} coordinates={country.coordinates}>
+              <button type="button" aria-label={`Select ${country.name}`} aria-pressed={country.name === activeCountry} onClick={() => setActiveCountry(country.name)} className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2">
+                <span aria-hidden="true" className="block rounded-full border-2 border-white transition-all" style={{ width: country.name === activeCountry ? '1.25rem' : '0.9rem', height: country.name === activeCountry ? '1.25rem' : '0.9rem', background: 'var(--accent-primary)', boxShadow: country.name === activeCountry ? '0 0 0 5px rgba(var(--accent-primary-rgb), 0.28)' : '0 1px 5px rgba(15,23,42,0.28)' }} />
+              </button>
+            </Marker>)}
+          </ComposableMap>
+        </div>
+        <aside aria-label="Countries Xanadu operates" className="flex flex-col justify-between gap-6 py-1">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: 'var(--text-muted)' }}>Countries Xanadu operates</p>
+            <div className="space-y-2">
+              {countries.map((country) => <button key={country.name} type="button" onClick={() => setActiveCountry(country.name)} aria-pressed={country.name === activeCountry} className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition-colors" style={{ color: 'var(--text-primary)', background: country.name === activeCountry ? 'rgba(var(--accent-primary-rgb), 0.1)' : 'transparent' }}>
+                <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: 'var(--accent-primary)', boxShadow: country.name === activeCountry ? '0 0 0 4px rgba(var(--accent-primary-rgb), 0.14)' : undefined }} />
+                <span><span className="block text-sm font-semibold">{country.name}</span><span className="block text-xs" style={{ color: 'var(--text-muted)' }}>{country.region}</span></span>
+              </button>)}
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 })
