@@ -101,7 +101,9 @@ export const PartnersSection = memo(function PartnersSection() {
 export const MapSection = memo(function MapSection() {
   const ref = useRef<HTMLElement>(null)
   const [activeCountry, setActiveCountry] = useState('Egypt')
+  const [mapReady, setMapReady] = useState(false)
   useRevealOnScroll(ref, { selector: '.map-reveal', y: 24, duration: 0.8, start: 'top 78%' })
+  useEffect(() => setMapReady(true), [])
   const countries = [
     { name: 'Egypt', region: 'North Africa', coordinates: [30.8, 26.8] as [number, number], description: 'A central hub for our regional operations.' },
     { name: 'Oman', region: 'Gulf', coordinates: [57.5, 21.5] as [number, number], description: 'Our gateway into the Gulf and wider region.' },
@@ -115,20 +117,20 @@ export const MapSection = memo(function MapSection() {
       <h2 className="map-reveal mb-8 text-3xl font-bold sm:text-4xl" style={{ fontFamily: 'var(--font-heading)' }}>A network with regional reach.</h2>
       <div className="map-reveal mx-auto grid max-w-5xl gap-6 overflow-hidden rounded-2xl border p-4 text-left sm:p-6 lg:grid-cols-[minmax(0,1fr)_220px]" style={{ background: 'rgba(255,255,255,0.72)', borderColor: 'rgba(61,90,128,0.16)', boxShadow: '0 20px 55px rgba(15,23,42,0.08)' }}>
         <div className="relative overflow-hidden rounded-xl border" style={{ background: '#edf3f6', borderColor: 'rgba(61,90,128,0.12)' }}>
-          <ComposableMap aria-label="World map showing Xanadu operations in Egypt, Oman, and Mauritius" projection="geoEqualEarth" projectionConfig={{ scale: 150, center: [20, 5] }} width={800} height={430} className="block h-auto w-full">
-            <Geographies geography={worldMap as unknown as GeoJsonObject}>
-              {({ geographies }) => geographies.map((geo) => {
-                const country = countries.find((item) => item.name === geo.properties?.name)
-                const isActive = country?.name === activeCountry
-                return <Geography key={geo.rsmKey ?? geo.id} geography={geo} fill={country ? 'var(--accent-primary)' : '#d8e3e7'} fillOpacity={country ? (isActive ? 0.95 : 0.62) : 1} stroke="#ffffff" strokeWidth={0.55} style={{ outline: 'none' }} />
-              })}
-            </Geographies>
-            {countries.map((country) => <Marker key={country.name} coordinates={country.coordinates}>
-              <button type="button" aria-label={`Select ${country.name}`} aria-pressed={country.name === activeCountry} onClick={() => setActiveCountry(country.name)} className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2">
-                <span aria-hidden="true" className="block rounded-full border-2 border-white transition-all" style={{ width: country.name === activeCountry ? '1.25rem' : '0.9rem', height: country.name === activeCountry ? '1.25rem' : '0.9rem', background: 'var(--accent-primary)', boxShadow: country.name === activeCountry ? '0 0 0 5px rgba(var(--accent-primary-rgb), 0.28)' : '0 1px 5px rgba(15,23,42,0.28)' }} />
-              </button>
-            </Marker>)}
-          </ComposableMap>
+          {mapReady ? <ComposableMap aria-label="World map showing Xanadu operations in Egypt, Oman, and Mauritius" projection="geoEqualEarth" projectionConfig={{ scale: 150, center: [20, 5] }} width={800} height={430} className="block h-auto w-full">
+              <Geographies geography={worldMap as unknown as GeoJsonObject}>
+                {({ geographies }) => geographies.map((geo) => {
+                  const country = countries.find((item) => item.name === geo.properties?.name)
+                  const isActive = country?.name === activeCountry
+                  return <Geography key={geo.rsmKey ?? geo.id} geography={geo} fill={country ? 'var(--accent-primary)' : '#d8e3e7'} fillOpacity={country ? (isActive ? 0.95 : 0.62) : 1} stroke="#ffffff" strokeWidth={0.55} style={{ outline: 'none' }} />
+                })}
+              </Geographies>
+              {countries.map((country) => <Marker key={country.name} coordinates={country.coordinates}>
+                <button type="button" aria-label={`Select ${country.name}`} aria-pressed={country.name === activeCountry} onClick={() => setActiveCountry(country.name)} className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2">
+                  <span aria-hidden="true" className="block rounded-full border-2 border-white transition-all" style={{ width: country.name === activeCountry ? '1.25rem' : '0.9rem', height: country.name === activeCountry ? '1.25rem' : '0.9rem', background: 'var(--accent-primary)', boxShadow: country.name === activeCountry ? '0 0 0 5px rgba(var(--accent-primary-rgb), 0.28)' : '0 1px 5px rgba(15,23,42,0.28)' }} />
+                </button>
+              </Marker>)}
+            </ComposableMap> : <div aria-hidden="true" className="aspect-[800/430] w-full" />}
         </div>
         <aside aria-label="Countries Xanadu operates" className="flex flex-col justify-between gap-6 py-1">
           <div>
