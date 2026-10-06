@@ -160,7 +160,9 @@ export const MapSection = memo(function MapSection() {
       overwrite: true,
       onUpdate: () => setMapView({ scale: mapViewRef.current.scale, center: [mapViewRef.current.longitude, mapViewRef.current.latitude] }),
     })
-    return () => animation.kill()
+    return () => {
+      animation.kill()
+    }
   }, [activeCountry, mapReady, selectedCountry.coordinates])
   const selectCountry = (countryName: string) => {
     hasSelectedCountry.current = true
