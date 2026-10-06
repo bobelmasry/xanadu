@@ -91,7 +91,42 @@ export const InvestmentsSection = memo(function InvestmentsSection({ variant = '
   </div></section>
 })
 
-const PARTNERS = [{ name: 'SMG', logo: '/partners/smg.png' }, { name: 'Entourage', logo: '/partners/entourage.png' }, { name: 'Ye Sports', logo: '/partners/ye-sports.png' }, { name: 'Winfi', logo: '/partners/winfi.png' }, { name: 'Bricks', logo: '/partners/bricks.png' }, { name: 'Tremoloo', logo: '/partners/tremoloo.png' }, { name: 'Odoo', logo: '/partners/odoo.png' }, { name: 'Clio', logo: '/partners/clio.png' }, { name: 'Cloudbeds', logo: '/partners/cloudbeds.png' }, { name: 'Asfaleia', logo: '/partners/asfaleia.png' }, { name: 'Taager', logo: '/partners/taager.png' }, { name: 'Nabda', logo: '/partners/nabda.png' }, { name: 'Influencer Hero', logo: '/partners/influencer_hero.png' }, { name: 'Beacons.ai', logo: '/partners/beacons.png' }, { name: 'El Shawaraby', logo : '/partners/elshawarby.png' }, { name: 'Contrato', logo: '/partners/contrato.png' }, { name: 'Al Zamil', logo : '/partners/al_zamil.png' }, { name: 'Bekiaa', logo: '/partners/bekia.png' }, { name: 'Zendesk', logo: '/partners/zendesk.png' }, { name: 'Infobip', logo: '/partners/infobip.png' }, { name: 'Gameball', logo: '/partners/gameball.png' }]
+const PARTNERS = [
+  { name: 'Asfaleia', logo: '/partners/asfaleia.png' },
+  { name: 'Bibliovation', logo: '/partners/Bibliovation.png' },
+  { name: 'Binalawi', logo: '/partners/binalawi.png' },
+  { name: 'Biostream', logo: '/partners/biostream.png' },
+  { name: 'Bricks', logo: '/partners/bricks.png' },
+  { name: 'Cede Hub', logo: '/partners/cede-hub.png' },
+  { name: 'CIGP', logo: '/partners/cigp.png' },
+  { name: 'Clio', logo: '/partners/clio.png' },
+  { name: 'Cloudbeds', logo: '/partners/cloudbeds.png' },
+  { name: 'Connect Sports', logo: '/partners/connect-sports.png' },
+  { name: 'ECC', logo: '/partners/ecc.png' },
+  { name: 'El Shawarby', logo: '/partners/elshawarby.png' },
+  { name: 'Entourage', logo: '/partners/entourage.png' },
+  { name: 'Fino', logo: '/partners/fino.png' },
+  { name: 'Flow Traders', logo: '/partners/flowtraders.png' },
+  { name: 'Gem', logo: '/partners/Gem .PNG' },
+  { name: 'Handle EA', logo: '/partners/handle-ea.png' },
+  { name: 'LLCE', logo: '/partners/llce.png' },
+  { name: 'Lorax', logo: '/partners/lorax.png' },
+  { name: 'Nexus', logo: '/partners/nexus.png' },
+  { name: 'Novacap', logo: '/partners/novacap.png' },
+  { name: 'OriginCX', logo: '/partners/origincx.png' },
+  { name: 'Overchain', logo: '/partners/overchain.png' },
+  { name: 'PToken', logo: '/partners/ptoken.png' },
+  { name: 'RMP', logo: '/partners/rmp.png' },
+  { name: 'Self', logo: '/partners/self.png' },
+  { name: 'Semoto', logo: '/partners/semoto.png' },
+  { name: 'SMG', logo: '/partners/smg.png' },
+  { name: 'TechKnowledge', logo: '/partners/techknowledge.png' },
+  { name: 'Tremoloo', logo: '/partners/tremoloo.png' },
+  { name: 'Vinchi', logo: '/partners/vinchi.png' },
+  { name: 'Wadi El Nile', logo: '/partners/wadielnile.png' },
+  { name: 'Ye Sports', logo: '/partners/ye-sports.png' },
+  { name: 'Zilla Capital', logo: '/partners/Zilla capital.PNG' },
+]
 export const PartnersSection = memo(function PartnersSection() {
   const ref = useRef<HTMLElement>(null)
   useRevealOnScroll(ref, { selector: '.partner-reveal', y: 30, duration: 0.8, stagger: 0.06, start: 'top 75%' })

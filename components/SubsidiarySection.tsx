@@ -42,14 +42,21 @@ interface SubsidiarySectionProps {
 function LogoChip({ entry, accent }: { entry: LogoEntry; accent: string }) {
   if (entry.logo) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element -- partner/client brand logo
+    <div
+      className="flex h-16 w-40 shrink-0 items-center justify-center rounded-lg px-4 py-3"
+      style={{
+        background: 'var(--bg-card)',
+        border: '1px solid var(--chip-border)',
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={entry.logo}
         alt={entry.name}
         loading="lazy"
-        className="h-14 w-auto max-w-[140px] object-contain px-3 py-1.5 rounded-lg"
-        style={{ background: 'var(--bg-card)', border: '1px solid var(--chip-border)' }}
+        className="max-h-10 max-w-24 object-contain"
       />
+    </div>
     )
   }
   return (

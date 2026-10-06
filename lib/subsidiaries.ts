@@ -72,15 +72,16 @@ export const SUBSIDIARIES: Subsidiary[] = [
     aboutText:
       "Unlike traditional consulting firms, we don't just create strategies; we work alongside you to execute them — backed by 15+ years across MENA, a proven methodology, and a wide network spanning fintech, e-commerce, SaaS, and digital transformation. With offices in Egypt, Oman, and Mauritius, we bridge global ideas with MENA realities.",
     clients: [
-      { name: 'Winfi', logo: '/partners/winfi.png' },
-      { name: 'Bricks', logo: '/partners/bricks.png' },
-      { name: 'Tremoloo', logo: '/partners/tremoloo.png' },
-      { name: 'Asfaleia', logo: '/partners/asfaleia.png' },
-      { name: 'Taager', logo: '/partners/taager.png' },
-      { name: 'Nabda', logo: '/partners/nabda.png' },
-      { name: 'Contrato', logo: '/partners/contrato.png' },
-      { name: 'Al Zamil' },
-      { name: 'Bekiaa', logo: '/partners/bekia.png' },
+      { name: 'Gem', logo: '/partners/consulting/Gem .PNG' },
+      { name: 'Zilla Capital', logo: '/partners/consulting/Zilla capital.PNG' },
+      { name: 'CIGP', logo: '/partners/consulting/cigp.png' },
+      { name: 'El Shawarby', logo: '/partners/consulting/elshawarby.png' },
+      { name: 'Handle EA', logo: '/partners/consulting/handle-ea.png' },
+      { name: 'Lorax', logo: '/partners/consulting/lorax.png' },
+      { name: 'Nexus', logo: '/partners/consulting/nexus.png' },
+      { name: 'Novacap', logo: '/partners/consulting/novacap.png' },
+      { name: 'RMP', logo: '/partners/consulting/rmp.png' },
+      { name: 'Techknowledge', logo: '/partners/consulting/techknowledge.png' },
     ],
   },
   {
@@ -102,11 +103,12 @@ export const SUBSIDIARIES: Subsidiary[] = [
     clientsNote:
       '1,000+ delivered projects across five MENA countries — serving hospitality, retail, manufacturing, logistics, legal, and distribution clients with 95% client satisfaction.',
     partners: [
-      { name: 'Odoo', logo: '/partners/odoo.png' },
-      { name: 'Clio', logo: '/partners/clio.png' },
-      { name: 'Cloudbeds', logo: '/partners/cloudbeds.png' },
-      { name: 'Beacons.ai', logo: '/partners/beacons.png' },
-      { name: 'Influencer Hero' },
+      { name: 'Bibliovation', logo: '/partners/soft/Bibliovation.png' },
+      { name: 'Asfaleia', logo: '/partners/soft/asfaleia.png' },
+      { name: 'Clio', logo: '/partners/soft/clio.png' },
+      { name: 'Cloudbeds', logo: '/partners/soft/cloudbeds.png' },
+      { name: 'OriginCX', logo: '/partners/soft/origincx.png' },
+      { name: 'Tremoloo', logo: '/partners/soft/tremoloo.png' },
     ],
   },
   {
@@ -128,11 +130,10 @@ export const SUBSIDIARIES: Subsidiary[] = [
     clientsNote:
       'Reaching 1.5+ billion sports fans worldwide through DBR broadcast technology — with 40M+ followers across the MENA region and access to all Big 5 football leagues.',
     partners: [
-      { name: 'Premier League' },
-      { name: 'La Liga' },
-      { name: 'Serie A' },
-      { name: 'Bundesliga' },
-      { name: 'Ligue 1' },
+      { name: 'Connect Sports', logo: '/partners/sports/connect-sports.png' },
+      { name: 'Entourage', logo: '/partners/sports/entourage.png' },
+      { name: 'SMG', logo: '/partners/sports/smg.png' },
+      { name: 'Ye Sports', logo: '/partners/sports/ye-sports.png' },
     ],
   },
   {
@@ -206,13 +207,11 @@ export const SUBSIDIARIES: Subsidiary[] = [
     clientsNote:
       '168+ global customers served by our design organization alone — alongside crypto-native teams, exchanges, and protocols across MENA and beyond.',
     partners: [
-      { name: 'Zendesk', logo: '/partners/zendesk.png' },
-      { name: 'Infobip', logo: '/partners/infobip.png' },
-      { name: 'MoEngage' },
-      { name: 'Gameball', logo: '/partners/gameball.png' },
-      { name: 'Bird' },
-      { name: 'Truecaller' },
-      { name: '3CX' },
+      { name: 'Cede Hub', logo: '/partners/web3/cede-hub.png' },
+      { name: 'Flow Traders', logo: '/partners/web3/flowtraders.png' },
+      { name: 'Overchain', logo: '/partners/web3/overchain.png' },
+      { name: 'PToken', logo: '/partners/web3/ptoken.png' },
+      { name: 'Semoto', logo: '/partners/web3/semoto.png' },
     ],
   },
 ]

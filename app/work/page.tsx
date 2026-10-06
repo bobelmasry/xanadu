@@ -94,7 +94,15 @@ export default function WorkPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {INVESTMENTS.map((inv) => (
-              <div key={inv.name} className="glass-card p-6">
+              <div key={inv.name} className="investment-card glass-card p-6">
+                <div className="investment-logo-frame mb-5">
+                  {inv.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- investment brand logo
+                    <img src={inv.logo} alt={`${inv.name} logo`} loading="lazy" />
+                  ) : (
+                    <span aria-hidden="true">{inv.name.slice(0, 2).toUpperCase()}</span>
+                  )}
+                </div>
                 <h3 className="text-lg font-semibold mb-2" style={{ color: '#D9B00D' }}>✧ {inv.name}</h3>
                 <p className="text-sm m-0" style={{ color: 'var(--text-secondary)' }}>{inv.overview}</p>
               </div>
