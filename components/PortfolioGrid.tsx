@@ -35,7 +35,13 @@ export default memo(function PortfolioGrid({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {items.map((p) =>
           variant === 'tagged' ? (
-            <div key={p.name} className="glass-card p-5 group cursor-default">
+            <div key={p.name} className="investment-card glass-card p-5 group cursor-default">
+              {p.logo && (
+                <div className="investment-logo-frame mb-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- portfolio brand logo */}
+                  <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
+                </div>
+              )}
               <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <span className="text-lg font-semibold" style={{ color: accent }}>{p.name}</span>
                 {p.tag && (
@@ -58,7 +64,13 @@ export default memo(function PortfolioGrid({
               <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{p.desc}</p>
             </div>
           ) : (
-            <div key={p.name} className="glass-card p-5">
+            <div key={p.name} className="investment-card glass-card p-5">
+              {p.logo && (
+                <div className="investment-logo-frame mb-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- portfolio brand logo */}
+                  <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
+                </div>
+              )}
               <h3 className="text-base font-semibold mb-2" style={{ color: accent }}>{p.name}</h3>
               <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{p.desc}</p>
             </div>

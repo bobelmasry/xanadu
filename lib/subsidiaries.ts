@@ -14,6 +14,7 @@ export interface PortfolioItem {
   name: string
   tag?: string
   desc: string
+  logo?: string
   stealth?: boolean
 }
 
@@ -157,10 +158,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
     portfolio: [
       { name: 'SEK', tag: 'Sharing Economy', desc: 'Self-governed, community-based marketplaces for renting items — solving trust and accessibility in the sharing economy. Product ready.' },
       { name: 'HERU', tag: 'Esports', desc: 'The esports arena for gamers, organizers, and sponsors across MENA — streamlining tournaments and building player communities. Product ready.' },
-      { name: 'BillBot', tag: 'Fintech / AI', desc: 'An AI-powered WhatsApp bot that helps users effortlessly track, manage, and pay all their bills in one place.', stealth: true },
       { name: 'TRUSS', tag: 'PropTech / Blockchain', desc: 'Real estate investment through blockchain tokenization — fractional ownership of premium properties.', stealth: true },
-      { name: 'Crypto Exchange', tag: 'Crypto / Fintech', desc: "Egypt's first compliant, regulated cryptocurrency exchange platform.", stealth: true },
-      { name: 'Local Brands Platform', tag: 'E-Commerce', desc: "A unified online marketplace connecting Egypt's emerging local brands with customers.", stealth: true },
     ],
   },
   {
@@ -182,10 +180,10 @@ export const SUBSIDIARIES: Subsidiary[] = [
     clientsNote:
       'Working with manufacturers and distributors across industrials, food and agri, and pharmaceuticals — from Egyptian factories to UK-licensed distributors serving Africa and the Middle East.',
     portfolio: [
-      { name: 'Standard Electric', desc: 'Egyptian industrial electrical accessories manufacturer since 1995. IEC & BS compliant switch systems.' },
-      { name: 'Food Trip — Spuds', desc: 'Premium kettle-cooked chips from Egypt. 10+ flavors, distributed in 23 countries.' },
-      { name: 'EPG Pharma', desc: 'UK-licensed pharmaceutical distributor serving Africa and the Middle East. GMP/MHRA compliant.' },
-      { name: 'Rich Land', desc: 'Large-scale agri-food producer. 5000+ acres, ISO/FDA/BRC certified. Full private-label manufacturing.' },
+      { name: 'Standard Electric', logo: '/partners/trading/standard_electric.png', desc: 'Egyptian industrial electrical accessories manufacturer since 1995. IEC & BS compliant switch systems.' },
+      { name: 'Food Trip — Spuds', logo: '/partners/trading/food_trip.png', desc: 'Premium kettle-cooked chips from Egypt. 10+ flavors, distributed in 23 countries.' },
+      { name: 'EPG Pharma', logo: '/partners/trading/epg_pharma.png', desc: 'UK-licensed pharmaceutical distributor serving Africa and the Middle East. GMP/MHRA compliant.' },
+      { name: 'Rich Land', logo: '/partners/trading/rich_land.png', desc: 'Large-scale agri-food producer. 5000+ acres, ISO/FDA/BRC certified. Full private-label manufacturing.' },
     ],
   },
   {
