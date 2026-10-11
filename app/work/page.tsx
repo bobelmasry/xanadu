@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getSubsidiary } from '../../lib/subsidiaries'
 import { INVESTMENTS } from '../../lib/investments'
 import PortfolioGrid from '../../components/PortfolioGrid'
+import TradingCarousel from '../../components/TradingCarousel'
 
 export const metadata = {
   alternates: { canonical: '/work' },
@@ -79,6 +80,7 @@ export default function WorkPage() {
                 </Link>
               </div>
               <PortfolioGrid items={trading.portfolio ?? []} accent={trading.color} heading="Manufacturers & Distributors" />
+              <TradingCarousel accent={trading.color} />
             </div>
           </div>
         </section>

@@ -187,6 +187,88 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.12em;
 }
 
+/* Trading product shelf (/work). Native scroll-snap track; the slide width
+   sets how many cards peek into view per breakpoint. Vertical padding gives
+   the .investment-card hover lift + shadow room inside the overflow clip. */
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  margin: -0.75rem 0;
+  padding: 0.75rem 0;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track:focus-visible {
+  outline: 2px solid rgba(77, 124, 255, 0.5);
+  outline-offset: 4px;
+  border-radius: 16px;
+}
+
+.carousel-slide {
+  flex: 0 0 72%;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .carousel-slide { flex-basis: calc((100% - 2rem) / 3); }
+}
+
+.carousel-frame {
+  display: flex;
+  height: 11rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .carousel-frame { height: 13rem; }
+}
+
+/* multiply drops the baked-in white/grey studio backdrops of the JPEGs into
+   the white frame so every product sits on the same surface. */
+.carousel-frame img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  padding: 0.75rem;
+  mix-blend-mode: multiply;
+  transition: transform 0.5s ease;
+}
+
+.carousel-arrow {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-arrow:hover:not(:disabled),
+.carousel-arrow:focus-visible {
+  box-shadow: var(--glow-trading);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .investment-toggle {
   display: flex;
   align-items: center;
