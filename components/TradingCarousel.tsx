@@ -19,7 +19,7 @@ const SLIDES: { src: string; alt: string; scale?: number }[] = [
   { src: '/carousel/spuds-siracha-pr8t6r6aux5b2mem2umi7qn4a1mb2sr70dp89mzo34.png', alt: 'Spuds Sriracha crisps' },
   { src: '/carousel/spuds-wrcester-pr8t6r6aux5b2mem2umi7qn4a1mb2sr70dp89mzo34.png', alt: 'Spuds Worcestershire crisps' },
 ]
-
+ 
 interface TradingCarouselProps {
   /** Subsidiary accent color (controls + progress tint). */
   accent: string
