@@ -79,8 +79,8 @@ export default function WorkPage() {
                   Explore Trading →
                 </Link>
               </div>
-              <PortfolioGrid items={trading.portfolio ?? []} accent={trading.color} heading="Manufacturers & Distributors" />
-              <TradingCarousel accent={trading.color} />
+              <PortfolioGrid items={trading.portfolio ?? []} accent={trading.color} heading="Some of our Earliest Manufacturers & Distributors" />
+              <TradingCarousel companies={trading.portfolio ?? []} accent={trading.color} />
             </div>
           </div>
         </section>

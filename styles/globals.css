@@ -221,6 +221,26 @@ h1, h2, h3, h4, h5, h6 {
   .carousel-slide { flex-basis: calc((100% - 2rem) / 3); }
 }
 
+/* One company per view; scroll position maps 1:1 to the active slide. */
+.carousel-slide.carousel-slide--full {
+  flex-basis: 100%;
+  scroll-snap-stop: always;
+}
+
+/* Product grid swaps in when the active company changes (keyed remount). */
+.carousel-products {
+  animation: carouselFadeIn 0.4s ease-out;
+}
+
+@keyframes carouselFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-products { animation: none; }
+}
+
 .carousel-frame {
   display: flex;
   height: 11rem;
