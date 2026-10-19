@@ -16,8 +16,8 @@ export interface Investment {
   name: string
   logo?: string
   overview: string
-  services: string[]
-  value: string
+  services?: string[]
+  value?: string
   caseStudy?: CaseStudy
 }
 
@@ -86,5 +86,15 @@ export const INVESTMENTS: Investment[] = [
       solution: 'Created a scroll-based discovery experience.',
       result: 'Higher engagement and impulse-driven purchases.',
     },
+  },
+  {
+    name: 'HERU',
+    logo: '/investments/heru.jpeg',
+    overview: 'The esports arena for gamers, organizers, and sponsors across MENA.',
+  },
+  {
+    name: 'ADLTIX',
+    logo: '/investments/adltix.png',
+    overview: 'AI-powered creator performance marketing for MENA, where brands pay only for attributed sales.',
   },
 ]

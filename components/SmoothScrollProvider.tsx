@@ -41,10 +41,11 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     }
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 0.9,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
+      wheelMultiplier: 1.3,
     })
     setLenis(lenis)
 

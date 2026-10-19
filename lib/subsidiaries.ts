@@ -157,7 +157,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
       'A growing portfolio of early-stage companies across the sharing economy, esports, fintech, PropTech, e-commerce, and AI — built at 3x speed by combining human expertise with AI acceleration.',
     portfolio: [
       { name: 'SEK', tag: 'Sharing Economy', desc: 'Self-governed, community-based marketplaces for renting items — solving trust and accessibility in the sharing economy. Product ready.' },
-      { name: 'HERU', tag: 'Esports', desc: 'The esports arena for gamers, organizers, and sponsors across MENA — streamlining tournaments and building player communities. Product ready.' },
+      { name: 'HERU', tag: 'Esports', logo: '/investments/heru.jpeg', desc: 'The esports arena for gamers, organizers, and sponsors across MENA — streamlining tournaments and building player communities. Product ready.' },
       { name: 'TRUSS', tag: 'PropTech / Blockchain', desc: 'Real estate investment through blockchain tokenization — fractional ownership of premium properties.', stealth: true },
     ],
   },
