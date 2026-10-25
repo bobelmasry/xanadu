@@ -86,10 +86,10 @@ export default function WorkPage() {
           >
             Projects
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
             {INVESTMENTS.map((inv) => (
-              <div key={inv.name} className="investment-card glass-card p-6">
-                <div className="investment-logo-frame mb-5">
+              <div key={inv.name} className="investment-card investment-card--open">
+                <div className="investment-logo-frame investment-logo-frame--open mb-5">
                   {inv.logo ? (
                     // eslint-disable-next-line @next/next/no-img-element -- investment brand logo
                     <img src={inv.logo} alt={`${inv.name} logo`} loading="lazy" />

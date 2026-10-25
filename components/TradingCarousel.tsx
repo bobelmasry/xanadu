@@ -115,9 +115,9 @@ export default function TradingCarousel({ companies, accent, heading = 'Some of 
             aria-label={`${company.name}, ${index + 1} of ${slides.length}`}
             aria-current={index === active ? 'true' : undefined}
           >
-            <div className="investment-card glass-card p-5 h-full flex flex-col sm:flex-row sm:items-center gap-5">
+            <div className="investment-card investment-card--open h-full flex flex-col sm:flex-row sm:items-center gap-5">
               {company.logo && (
-                <div className="investment-logo-frame sm:w-56 shrink-0">
+                <div className="investment-logo-frame investment-logo-frame--open sm:w-56 shrink-0">
                   {/* eslint-disable-next-line @next/next/no-img-element -- partner brand logo */}
                   <img src={company.logo} alt={`${company.name} logo`} loading="lazy" draggable={false} />
                 </div>

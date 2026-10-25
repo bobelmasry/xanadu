@@ -32,12 +32,12 @@ export default memo(function PortfolioGrid({
       <p className="text-xs uppercase tracking-[0.25em] mb-5" style={{ color: 'var(--text-muted)' }}>
         {heading}
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
         {items.map((p) =>
           variant === 'tagged' ? (
-            <div key={p.name} className="investment-card glass-card p-5 group cursor-default">
+            <div key={p.name} className="investment-card investment-card--open group cursor-default">
               {p.logo && (
-                <div className="investment-logo-frame mb-4">
+                <div className="investment-logo-frame investment-logo-frame--open mb-5">
                   {/* eslint-disable-next-line @next/next/no-img-element -- portfolio brand logo */}
                   <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
                 </div>
@@ -64,9 +64,9 @@ export default memo(function PortfolioGrid({
               <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{p.desc}</p>
             </div>
           ) : (
-            <div key={p.name} className="investment-card glass-card p-5">
+            <div key={p.name} className="investment-card investment-card--open">
               {p.logo && (
-                <div className="investment-logo-frame mb-4">
+                <div className="investment-logo-frame investment-logo-frame--open mb-5">
                   {/* eslint-disable-next-line @next/next/no-img-element -- portfolio brand logo */}
                   <img src={p.logo} alt={`${p.name} logo`} loading="lazy" />
                 </div>
