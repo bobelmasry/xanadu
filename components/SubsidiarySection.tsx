@@ -3,7 +3,7 @@
 import React, { useRef } from 'react'
 import Link from 'next/link'
 import { useRevealOnScroll } from '../lib/useRevealOnScroll'
-import type { LogoEntry } from '../lib/subsidiaries'
+import type { LogoEntry, Service } from '../lib/subsidiaries'
 
 interface SubsidiarySectionProps {
   id: string
@@ -12,9 +12,9 @@ interface SubsidiarySectionProps {
   hookText: string
   summaryText: string
   description: string
-  servicesText: string
+  services: Service[]
+  servicesNote?: string
   ctaText?: string
-  onCtaClick?: () => void
   /**
    * 'summary' (default) — home-page teaser: name + logo + one-liner +
    * a "Learn more" link to the detail page. Heavy copy lives on the
@@ -76,9 +76,9 @@ export default function SubsidiarySection({
   hookText,
   summaryText,
   description,
-  servicesText,
+  services,
+  servicesNote,
   ctaText,
-  onCtaClick,
   variant = 'summary',
   logo,
   contentClassName,
@@ -175,11 +175,31 @@ export default function SubsidiarySection({
               </div>
 
               {/* Services */}
-              <div className="reveal-item glass-card p-5 mb-10">
-                <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: 'var(--text-muted)' }}>Services</p>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  {servicesText}
-                </p>
+              <div className="reveal-item mb-12">
+                <p className="text-xs uppercase tracking-[0.25em] mb-6" style={{ color: 'var(--text-muted)' }}>Services</p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
+                  {services.map((service, i) => (
+                    <li key={service.title} className="pt-5" style={{ borderTop: '1px solid var(--chip-border)' }}>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span aria-hidden="true" className="text-xs font-semibold tabular-nums" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-heading)' }}>
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span aria-hidden="true" className="h-0.5 w-6 rounded-full" style={{ background: color }} />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-1.5" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-heading)' }}>
+                        {service.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                        {service.desc}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+                {servicesNote && (
+                  <p className="mt-8 text-sm leading-relaxed" style={{ color: 'var(--text-muted)', maxWidth: '640px' }}>
+                    {servicesNote}
+                  </p>
+                )}
               </div>
 
               {/* Clients */}
@@ -246,7 +266,8 @@ export default function SubsidiarySection({
 
             {/* CTA Button — detail page (home funnels through Learn more / Final CTA). */}
             {variant === 'full' && ctaText && (
-              <button
+              <Link
+                href="/contact"
                 className="svc-cta group relative inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 overflow-hidden"
                 style={{
                   '--cta-bg': `${color}15`,
@@ -255,10 +276,9 @@ export default function SubsidiarySection({
                   '--cta-color': color,
                   '--cta-glow': `0 0 30px ${color}30`,
                 } as React.CSSProperties}
-                onClick={onCtaClick}
               >
                 → {ctaText}
-              </button>
+              </Link>
             )}
           </div>
         </div>

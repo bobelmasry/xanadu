@@ -1,6 +1,9 @@
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import Link from 'next/link'
 import { getSubsidiary } from '../../lib/subsidiaries'
 import { INVESTMENTS } from '../../lib/investments'
+import { CUSTOMERS } from '../../lib/customers'
 import PortfolioGrid from '../../components/PortfolioGrid'
 import TradingCarousel from '../../components/TradingCarousel'
 
@@ -11,10 +14,21 @@ export const metadata = {
     'A look at the companies, ventures, projects, and clients across the Xanadu ecosystem — from AI-built startups to global trade corridors.',
 }
 
-const CLIENTS = getSubsidiary('consulting')!.clients ?? []
+/**
+ * Display size for a customer logo so every logo covers roughly the same area:
+ * wide wordmarks come out shorter, square and tall marks taller. Reads the
+ * PNG's own dimensions (IHDR) at build time, so new logos need no tuning.
+ */
+const LOGO_AREA = 3600
+function logoSize(src: string) {
+  const png = readFileSync(path.join(process.cwd(), 'public', src))
+  const ratio = png.readUInt32BE(16) / png.readUInt32BE(20)
+  let height = Math.sqrt(LOGO_AREA / ratio)
+  height = Math.min(height, 64, 150 / ratio)
+  return { width: Math.round(height * ratio), height: Math.round(height) }
+}
 
 export default function WorkPage() {
-  const ventures = getSubsidiary('ventures')!
   const trading = getSubsidiary('trading')!
 
   return (
@@ -41,48 +55,26 @@ export default function WorkPage() {
           MENA and beyond.
         </p>
 
-        {/* ── Portfolio ── */}
-        <section aria-labelledby="work-portfolio" className="mb-20">
-          <h2
-            id="work-portfolio"
-            className="text-2xl sm:text-3xl font-bold mb-8"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            Portfolio
-          </h2>
-          <div className="space-y-12">
-            <div>
-              <div className="flex items-baseline justify-between gap-4 mb-5 flex-wrap">
-                <h3 className="text-lg font-semibold" style={{ color: ventures.color, fontFamily: 'var(--font-heading)' }}>
-                  {ventures.name} — venture-built startups
-                </h3>
-                <Link
-                  href={`/subsidiaries/${ventures.id}`}
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-heading)' }}
-                >
-                  Explore Ventures →
-                </Link>
-              </div>
-              <PortfolioGrid items={ventures.portfolio ?? []} accent={ventures.color} variant="tagged" heading="Ventures" />
-            </div>
-            <div>
-              <div className="flex items-baseline justify-between gap-4 mb-5 flex-wrap">
-                <h3 className="text-lg font-semibold" style={{ color: trading.color, fontFamily: 'var(--font-heading)' }}>
-                  {trading.name} — trade corridors & manufacturers
-                </h3>
-                <Link
-                  href={`/subsidiaries/${trading.id}`}
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-heading)' }}
-                >
-                  Explore Trading →
-                </Link>
-              </div>
-              <PortfolioGrid items={trading.portfolio ?? []} accent={trading.color} heading="Some of our Earliest Manufacturers & Distributors" />
-              <TradingCarousel companies={trading.portfolio ?? []} accent={trading.color} />
-            </div>
+        {/* ── Trading ── */}
+        <section aria-labelledby="work-trading" className="mb-20">
+          <div className="flex items-baseline justify-between gap-4 mb-5 flex-wrap">
+            <h2
+              id="work-trading"
+              className="text-2xl sm:text-3xl font-bold"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              {trading.name} — trade corridors & manufacturers
+            </h2>
+            <Link
+              href={`/subsidiaries/${trading.id}`}
+              className="text-sm font-medium"
+              style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-heading)' }}
+            >
+              Explore Trading →
+            </Link>
           </div>
+          <PortfolioGrid items={trading.portfolio ?? []} accent={trading.color} heading="Some of our Earliest Manufacturers & Distributors" />
+          <TradingCarousel companies={trading.portfolio ?? []} accent={trading.color} />
         </section>
 
         {/* ── Projects ── */}
@@ -105,7 +97,7 @@ export default function WorkPage() {
                     <span aria-hidden="true">{inv.name.slice(0, 2).toUpperCase()}</span>
                   )}
                 </div>
-                <h3 className="text-lg font-semibold mb-2" style={{ color: '#D9B00D' }}>✧ {inv.name}</h3>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#D9B00D' }}>{inv.name}</h3>
                 <p className="text-sm m-0" style={{ color: 'var(--text-secondary)' }}>{inv.overview}</p>
               </div>
             ))}
@@ -119,47 +111,31 @@ export default function WorkPage() {
           </Link>
         </section>
 
-        {/* ── Clients ── */}
-        <section aria-labelledby="work-clients" className="mb-20">
+        {/* ── Customers ── */}
+        <section aria-labelledby="work-customers" className="mb-20">
           <h2
-            id="work-clients"
+            id="work-customers"
             className="text-2xl sm:text-3xl font-bold mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Clients
+            Customers
           </h2>
           <p className="text-base leading-relaxed mb-8 max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
-            We partner with innovative companies across MENA — 1,000+ delivered
-            projects across five countries, with 95% client satisfaction.
+            Some of the companies our subsidiaries work with across MENA and beyond.
           </p>
-          <div className="flex flex-wrap gap-3">
-            {CLIENTS.map((c) =>
-              c.logo ? (
-                // eslint-disable-next-line @next/next/no-img-element -- client brand logo
-                <img
-                  key={c.name}
-                  src={c.logo}
-                  alt={c.name}
-                  loading="lazy"
-                  className="h-11 w-auto max-w-[130px] object-contain px-3 py-1.5 rounded-lg"
-                  style={{ background: 'var(--bg-card)', border: '1px solid var(--chip-border)' }}
-                />
-              ) : (
-                <span
-                  key={c.name}
-                  className="text-sm font-semibold tracking-wide px-4 py-2 rounded-lg"
-                  style={{ color: 'var(--text-secondary)', background: 'var(--bg-card)', border: '1px solid var(--chip-border)' }}
-                >
-                  {c.name}
-                </span>
-              )
-            )}
-          </div>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-10 gap-y-8">
+            {CUSTOMERS.map((c) => (
+              <li key={c.name} className="flex h-16 items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element -- customer brand logo */}
+                <img src={c.logo} alt={c.name} loading="lazy" {...logoSize(c.logo!)} className="object-contain" />
+              </li>
+            ))}
+          </ul>
         </section>
 
         <div>
           <Link
-            href="/#final-cta"
+            href="/contact"
             className="inline-flex items-center mb-12 gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-85"
             style={{
               background: '#3D5A80',

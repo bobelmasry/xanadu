@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Respect prefers-reduced-motion for CSS-driven motion (the loading spinner,
    scroll-bounce, breathing/float glows, etc.). JS-driven motion is gated
-   separately in each component (Lenis, ParticleField, CustomCursor, GSAP
+   separately in each component (Lenis, ParticleField, GSAP
    infinite tweens). */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -185,6 +185,34 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.12em;
+}
+
+/* Investments section: companies sit on the page, no card or logo frame. */
+.investment-card--open,
+.investment-card--open:hover {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+.investment-logo-frame--open {
+  justify-content: flex-start;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.investment-logo-frame--open img {
+  padding: 0;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Homepage map: no frame, edges fade into the page. */
+.map-canvas {
+  -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 62%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 62%, transparent 100%);
 }
 
 /* Trading product shelf (/work). Native scroll-snap track; the slide width

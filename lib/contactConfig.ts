@@ -1,4 +1,3 @@
-import type { SessionType } from './leads/types'
 import { SUBSIDIARIES, divisionName, type Subsidiary } from './subsidiaries'
 
 export interface Step {
@@ -54,23 +53,4 @@ export const ROUTING: Record<string, Routing> = {
   'Sports & Sponsorships': to('sports'),
   'Building a New Idea': to('ventures'),
   'Web3 & Crypto': to('xw3'),
-}
-
-/** Resolve the scheduling embed URL for a session type. Env-gated: returns null
- *  (→ the flow skips the booking step straight to confirmation) when no calendar
- *  URL is configured. Only https: URLs are honored — the value flows verbatim
- *  into an iframe src, so a `javascript:`/`data:` value (or a plain http:
- *  downgrade) must never reach the DOM. NEXT_PUBLIC_ vars are inlined at
- *  build, client-safe. */
-export function getCalendarUrl(sessionType: SessionType): string | null {
-  const generic = process.env.NEXT_PUBLIC_CALENDAR_URL
-  const url = sessionType === 'paid'
-    ? process.env.NEXT_PUBLIC_CALENDAR_PAID_URL || generic
-    : process.env.NEXT_PUBLIC_CALENDAR_FREE_URL || generic
-  if (!url) return null
-  try {
-    return new URL(url).protocol === 'https:' ? url : null
-  } catch {
-    return null
-  }
 }

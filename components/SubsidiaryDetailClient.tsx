@@ -1,18 +1,10 @@
 "use client"
 
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import { SUBSIDIARY_SECTIONS } from '../app/homeJourney'
 
-// Code-split + mount-on-open (keeps the ~150 KB phone-validation dep out of
-// the detail pages' initial bundle).
-const ContactFlow = dynamic(() => import('./ContactFlow'), { ssr: false })
-
 export default function SubsidiaryDetailClient({ id }: { id: string }) {
-  const [contactOpen, setContactOpen] = useState(false)
-  const closeContact = useCallback(() => setContactOpen(false), [])
-  const openContact = useCallback(() => setContactOpen(true), [])
   const Section = SUBSIDIARY_SECTIONS[id]
   if (!Section) return null
 
@@ -27,8 +19,7 @@ export default function SubsidiaryDetailClient({ id }: { id: string }) {
           ← All subsidiaries
         </Link>
       </div>
-      <Section variant="full" onContactClick={openContact} />
-      {contactOpen && <ContactFlow isOpen={contactOpen} onClose={closeContact} />}
+      <Section variant="full" />
     </main>
   )
 }

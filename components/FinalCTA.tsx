@@ -1,13 +1,10 @@
 "use client"
 
 import React, { memo, useRef } from 'react'
+import Link from 'next/link'
 import { useRevealOnScroll } from '../lib/useRevealOnScroll'
 
-interface FinalCTAProps {
-  onContactClick?: () => void
-}
-
-export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
+export default memo(function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null)
   useRevealOnScroll(sectionRef, {
     selector: '.cta-reveal',
@@ -50,14 +47,14 @@ export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
           Ready to scale?
         </p>
 
-        <button
-          className="cta-reveal group relative px-10 py-4 rounded-xl text-base font-semibold overflow-hidden transition-all duration-500"
+        <Link
+          href="/contact"
+          className="cta-reveal group relative inline-block px-10 py-4 rounded-xl text-base font-semibold overflow-hidden transition-all duration-500"
           style={{
             background: 'linear-gradient(135deg, #3D5A80, #34496a)',
             border: '1px solid rgba(61,90,128,0.5)',
             color: '#fff',
           }}
-          onClick={onContactClick}
           onMouseEnter={(e) => {
             (e.currentTarget).style.boxShadow = '0 8px 30px rgba(61,90,128,0.35)'
             ;(e.currentTarget).style.transform = 'translateY(-2px)'
@@ -68,7 +65,7 @@ export default memo(function FinalCTA({ onContactClick }: FinalCTAProps) {
           }}
         >
           → Talk to Xanadu
-        </button>
+        </Link>
 
         {/* Footer brand mark */}
         <div className="mt-32 pt-8 flex flex-col items-center gap-6" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>

@@ -18,6 +18,12 @@ export interface PortfolioItem {
   stealth?: boolean
 }
 
+/** One service on a subsidiary's detail page. */
+export interface Service {
+  title: string
+  desc: string
+}
+
 /** Detail-page client/partner chip — logo if an asset exists, text otherwise. */
 export interface LogoEntry {
   name: string
@@ -36,8 +42,10 @@ export interface Subsidiary {
   summaryText: string
   /** Full description — detail page only. */
   description: string
-  /** Full services breakdown — detail page only. */
-  servicesText: string
+  /** Services breakdown — detail page only. */
+  services: Service[]
+  /** Optional closing line under the services grid (track record, method). */
+  servicesNote?: string
   ctaText: string
   /** Override the content column's width/position classes. */
   contentClassName?: string
@@ -66,8 +74,13 @@ export const SUBSIDIARIES: Subsidiary[] = [
       'An executional consulting boutique for tech startups and service companies across MENA — acting as your outsourced Sales & Business Development team.',
     description:
       'An executional consulting boutique for technology startups and service companies across MENA — we act as your Sales and Business Development team, with full accountability and clear deliverables.',
-    servicesText:
-      'Outsourced Sales & BD — end-to-end sales support, pipeline management, and measurable ROI. Market Launch — unlocking MENA opportunities for Egyptian companies expanding abroad and international companies entering Egypt. Advisory — market and product development, fundraising and international growth, regulation and compliance. All delivered through a proven 7-step methodology, from product onboarding to project management, with offices in Egypt, Oman, and Mauritius.',
+    services: [
+      { title: 'Outsourced Sales & BD', desc: 'End-to-end sales support, pipeline management, and measurable ROI.' },
+      { title: 'Market Launch', desc: 'Unlocking MENA opportunities for Egyptian companies expanding abroad and international companies entering Egypt.' },
+      { title: 'Advisory', desc: 'Market and product development, fundraising and international growth, regulation and compliance.' },
+    ],
+    servicesNote:
+      'All delivered through a proven 7-step methodology, from product onboarding to project management, with offices in Egypt, Oman, and Mauritius.',
     ctaText: 'Accelerate Your Growth',
     contentClassName: 'max-w-xl mx-auto md:mx-0 md:ml-8 md:max-w-[min(80vw,920px)]',
     aboutText:
@@ -83,6 +96,7 @@ export const SUBSIDIARIES: Subsidiary[] = [
       { name: 'Novacap', logo: '/partners/consulting/novacap.png' },
       { name: 'RMP', logo: '/partners/consulting/rmp.png' },
       { name: 'Techknowledge', logo: '/partners/consulting/techknowledge.png' },
+      { name: 'Track3 Consulting', logo: '/partners/consulting/track3.png' },
     ],
   },
   {
@@ -95,8 +109,16 @@ export const SUBSIDIARIES: Subsidiary[] = [
       'A leading systems integrator bringing international technology to MENA businesses — from hospitality and retail to logistics and legal.',
     description:
       'A leading systems integrator bringing cutting-edge international technology solutions to the MENA region — empowering local businesses through innovation tailored to regional needs, from hospitality and retail to logistics and legal.',
-    servicesText:
-      'Software development and outsourcing, Odoo ERP implementation, Cloudbeds property management systems, Clio legal clinics management, creators and influencer management with Beacons.ai and Influencer Hero, and cybersecurity services. Official MENA partner of Odoo and Clio — with 1,000+ projects delivered across five MENA countries and 95% client satisfaction.',
+    services: [
+      { title: 'Software Development', desc: 'Software development and outsourcing.' },
+      { title: 'Odoo ERP', desc: 'Odoo ERP implementation as an official MENA partner.' },
+      { title: 'Cloudbeds', desc: 'Property management systems for hospitality.' },
+      { title: 'Clio', desc: 'Legal clinics management as an official MENA partner.' },
+      { title: 'Creator & Influencer Management', desc: 'Creators and influencer management with Beacons.ai and Influencer Hero.' },
+      { title: 'Cybersecurity', desc: 'Cybersecurity services.' },
+    ],
+    servicesNote:
+      '1,000+ projects delivered across five MENA countries, with 95% client satisfaction.',
     ctaText: 'Upgrade Your Systems',
     contentClassName: 'max-w-xl mx-auto md:mx-0 md:ml-8 md:max-w-[min(70vw,840px)]',
     aboutText:
@@ -122,8 +144,16 @@ export const SUBSIDIARIES: Subsidiary[] = [
       'A sports consulting boutique spanning sponsorship, events, athlete representation, and youth development — connecting brands, athletes, and fans.',
     description:
       'A leading sports consulting boutique specializing in sports sponsorship, event management, athlete representation, and youth development — bridging brands, athletes, and local markets to create unique, impactful experiences across the sports ecosystem.',
-    servicesText:
-      'Sports commercial partnerships connecting brands with clubs, academies, athletes, and celebrities. Official player representation — from contract negotiations to endorsement deals. Gaming and e-sports management. DBR advertising technology delivering region-specific ads during live broadcasts across six regions. Sports tech solutions. And world-class facility management — from football, padel, and tennis courts to gyms, CrossFit boxes, and clubhouses. With access to the Big 5 football leagues and 40M+ followers across MENA.',
+    services: [
+      { title: 'Commercial Partnerships', desc: 'Connecting brands with clubs, academies, athletes, and celebrities.' },
+      { title: 'Player Representation', desc: 'Official player representation — from contract negotiations to endorsement deals.' },
+      { title: 'Gaming & Esports', desc: 'Gaming and e-sports management.' },
+      { title: 'DBR Advertising Technology', desc: 'Region-specific ads during live broadcasts across six regions.' },
+      { title: 'Sports Tech', desc: 'Sports tech solutions.' },
+      { title: 'Facility Management', desc: 'From football, padel, and tennis courts to gyms, CrossFit boxes, and clubhouses.' },
+    ],
+    servicesNote:
+      'With access to the Big 5 football leagues and 40M+ followers across MENA.',
     ctaText: 'Start Your Sports Journey',
     contentClassName: 'max-w-xl mx-auto md:mx-0 md:ml-8 md:max-w-[min(80vw,920px)]',
     aboutText:
@@ -147,18 +177,22 @@ export const SUBSIDIARIES: Subsidiary[] = [
       'An AI-powered venture studio taking early-stage ideas from validation to launch and fundraising.',
     description:
       'An AI-powered early-stage venture studio offering a complete ecosystem for early-stage startups across MENA. From market validation to scaling and fundraising, we help entrepreneurs turn groundbreaking ideas into sustainable businesses.',
-    servicesText:
-      'Full product development from concept to launch, complete tech development with proven scalability, and strategic business development and growth support — powered by a 6-week venture building pipeline: idea, productization, design and architecture, development, marketing and GTM, launch, and CEO partnership. Idea to seed, sector-agnostic, Egypt-first — sharing economy, esports, fintech, PropTech, e-commerce, and AI.',
+    services: [
+      { title: 'Product Development', desc: 'Full product development from concept to launch.' },
+      { title: 'Tech Development', desc: 'Complete tech development with proven scalability.' },
+      { title: 'Business Development & Growth', desc: 'Strategic business development and growth support.' },
+    ],
+    servicesNote:
+      'Powered by a 6-week venture building pipeline: idea, productization, design and architecture, development, marketing and GTM, launch, and CEO partnership. Idea to seed, sector-agnostic, Egypt-first — sharing economy, esports, fintech, e-commerce, and AI.',
     ctaText: 'Ready to Build Together',
     contentClassName: 'max-w-xl mx-auto md:mx-0 md:ml-8 md:max-w-[min(80vw,920px)]',
     aboutText:
       'Our approach combines three advantages: an AI-powered framework (rapid prototyping, MVP creation, and market launch), an experienced team with a proven track record of building, scaling, and exiting startups, and record-pace launch through a 6-week venture-building pipeline — idea, productization, design and architecture, development, marketing and GTM, launch, and CEO partnership. Focus: MENA region, sector-agnostic, idea to seed — Egypt-first.',
     clientsNote:
-      'A growing portfolio of early-stage companies across the sharing economy, esports, fintech, PropTech, e-commerce, and AI — built at 3x speed by combining human expertise with AI acceleration.',
+      'A growing portfolio of early-stage companies across the sharing economy, esports, fintech, e-commerce, and AI — built at 3x speed by combining human expertise with AI acceleration.',
     portfolio: [
-      { name: 'SEK', tag: 'Sharing Economy', desc: 'Self-governed, community-based marketplaces for renting items — solving trust and accessibility in the sharing economy. Product ready.' },
+      { name: 'SEK', tag: 'Sharing Economy', logo: '/investments/sek.png', desc: 'Self-governed, community-based marketplaces for renting items — solving trust and accessibility in the sharing economy. Product ready.' },
       { name: 'HERU', tag: 'Esports', logo: '/investments/heru.jpeg', desc: 'The esports arena for gamers, organizers, and sponsors across MENA — streamlining tournaments and building player communities. Product ready.' },
-      { name: 'TRUSS', tag: 'PropTech / Blockchain', desc: 'Real estate investment through blockchain tokenization — fractional ownership of premium properties.', stealth: true },
     ],
   },
   {
@@ -171,8 +205,11 @@ export const SUBSIDIARIES: Subsidiary[] = [
       'We connect manufacturers, distributors, and global buyers — turning supply into real opportunity.',
     description:
       'Businesses miss opportunities from a lack of access, positioning, or networks. We connect manufacturers, distributors, and global buyers to turn supply into real opportunity.',
-    servicesText:
-      'We open the right doors through strategic market access and direct manufacturer-buyer connections. We then handle international distribution, trade positioning, and negotiation to turn supply into real opportunity.',
+    services: [
+      { title: 'Market Access', desc: 'Strategic market access and direct manufacturer-buyer connections.' },
+      { title: 'International Distribution', desc: 'We handle international distribution to get products where they need to go.' },
+      { title: 'Trade Positioning & Negotiation', desc: 'Trade positioning and negotiation to turn supply into real opportunity.' },
+    ],
     ctaText: 'Explore Trade Opportunities',
     contentClassName: 'max-w-xl mx-auto md:mx-0 md:ml-8 md:max-w-[min(80vw,920px)]',
     aboutText:
@@ -196,8 +233,12 @@ export const SUBSIDIARIES: Subsidiary[] = [
       'The complete Web3 growth partner — taking crypto brands from awareness to adoption and trust.',
     description:
       'The complete Web3 growth partner. We take crypto brands from awareness to adoption, retention, and trust — combining deep MENA expertise, global reach, and a 100% crypto-native team.',
-    servicesText:
-      'Sports marketing — DPR technology delivering region-specific overlays on live broadcasts with 37% higher brand recall, plus club sponsorships and athlete endorsements that bypass ad bans. Elite UX/UI design — audits, user research, usability testing, and AI prototyping from 30+ designers with engineering backgrounds. Omnichannel customer experience across Zendesk, Infobip, MoEngage, and more. And cybersecurity and compliance — smart contract audits, pentesting, red teaming, and MiCA/VARA advisory.',
+    services: [
+      { title: 'Sports Marketing', desc: 'DPR technology delivering region-specific overlays on live broadcasts with 37% higher brand recall, plus club sponsorships and athlete endorsements that bypass ad bans.' },
+      { title: 'UX/UI Design', desc: 'Audits, user research, usability testing, and AI prototyping from 30+ designers with engineering backgrounds.' },
+      { title: 'Omnichannel Customer Experience', desc: 'Across Zendesk, Infobip, MoEngage, and more.' },
+      { title: 'Cybersecurity & Compliance', desc: 'Smart contract audits, pentesting, red teaming, and MiCA/VARA advisory.' },
+    ],
     ctaText: 'Build Your Web3 Brand',
     contentClassName: 'max-w-xl mx-auto md:mx-0 md:ml-8 md:max-w-[min(96vw,1040px)]',
     aboutText:
